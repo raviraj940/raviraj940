@@ -48,15 +48,15 @@ and building data-driven solutions.
 
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
-### 🤖 Machine Learning
+## 🤖 Machine Learning
 
 ![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
+**Currently Learning:**
 - Regression
 - Classification
 - Clustering
 - Feature Engineering
-
 ### 🔧 Tools
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
@@ -82,68 +82,51 @@ and building data-driven solutions.
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=tokyonight)
 
 ---
+## 🚀 Featured Projects
 
-## 📊 Featured Projects
+### 🧑‍💻 AttendEase — Face Recognition Attendance System
 
-### 🛒 E-Commerce Sales Analysis
+**Java | Face Recognition | Attendance Management**
 
-**Python | Pandas | Matplotlib | Seaborn**
+A face recognition based attendance management system developed to automate attendance recording.
 
-- Data cleaning and preprocessing
-- Exploratory Data Analysis
-- Sales trend analysis
-- Customer behavior analysis
-- Data visualization
+**Key Features:**
+- Face-based attendance
+- Automated attendance recording
+- Attendance management
+- Java-based application
 
----
-
-### 📈 Power BI Sales Dashboard
-
-**Power BI | Excel**
-
-- Revenue analysis
-- Profit analysis
-- Regional performance
-- Product performance
-- Interactive dashboard
+🔗 [View Project](https://github.com/raviraj940/AttendEase)
 
 ---
 
-### 🗄️ SQL Data Analysis
+### 📄 PDFNova — PDF Management Platform
 
-**SQL | MySQL**
+**TypeScript | PDF Processing | Web Application**
 
-- Joins
-- Aggregations
-- Subqueries
-- CTEs
-- Window Functions
-- Business queries
+A modern PDF toolkit designed for working with PDF documents.
 
----
+**Key Features:**
+- Merge PDF files
+- Split PDF files
+- Compress PDF files
+- Convert PDF files
+- Organize PDF documents
+- Secure PDF files
 
-### 🤖 Customer Churn Prediction
-
-**Python | Pandas | Scikit-learn**
-
-- Data preprocessing
-- Exploratory Data Analysis
-- Feature engineering
-- Classification
-- Model evaluation
-
----
+🔗 [View Project](https://github.com/raviraj940/PDFNova)
 
 ## 📚 Currently Learning
 
-- Advanced SQL
+- Python for Data Analysis
+- Pandas & NumPy
+- SQL & MySQL
 - Power BI
 - Statistics
 - Machine Learning
 - Data Visualization
-- Advanced Python
-
 ---
+
 
 ## 🎯 Areas of Interest
 
