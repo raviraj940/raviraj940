@@ -1,150 +1,134 @@
-# Hi 👋, I'm Ravi Raj
+<!-- ===================== HEADER ===================== -->
 
-### 📊 Aspiring Data Analyst | Data Science Enthusiast
+<div align="center">
 
-I'm a Computer Science student passionate about Data Analytics,
-Data Science, Machine Learning, and Business Intelligence.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=220&section=header&text=Hi%2C%20I'm%20Ravi%20Raj&fontSize=48&fontColor=ffffff&fontAlignY=40&animation=fadeIn" width="100%"/>
 
-I enjoy working with data, solving problems, discovering insights,
-and building data-driven solutions.
+# 📊 Aspiring Data Analyst
+
+### Turning Data into Insights • Solving Problems • Building Data-Driven Solutions
+
+🎓 Computer Science Student | 📊 Data Analytics | 🤖 Data Science | 📈 Business Intelligence
+
+<br/>
+
+<a href="https://github.com/raviraj940">
+<img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<a href="YOUR_LINKEDIN_URL">
+<img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+
+<a href="YOUR_EMAIL">
+<img src="https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
+
+</div>
 
 ---
+
+<!-- ===================== ABOUT ME ===================== -->
 
 ## 👨‍💻 About Me
 
+I'm **Ravi Raj**, a Computer Science student passionate about **Data Analytics, Data Science, Machine Learning, and Business Intelligence**.
+
+I enjoy working with data, solving real-world problems, discovering hidden insights, and building data-driven solutions.
+
 - 🎓 Computer Science Student
-- 📊 Interested in Data Analytics & Data Science
-- 🐍 Learning and working with Python
-- 🗄️ Working with SQL and MySQL
-- 📈 Learning Power BI & Data Visualization
-- 🤖 Exploring Machine Learning
+- 📊 Aspiring Data Analyst
+- 🐍 Python enthusiast
+- 🗄️ SQL & MySQL learner
+- 📈 Exploring Power BI & Data Visualization
+- 🤖 Learning Machine Learning
 - 💡 Interested in solving real-world problems using data
 - 🚀 Currently building data analytics projects
 
+> **"Data tells a story. My goal is to understand it, visualize it, and turn it into meaningful decisions."**
+
 ---
+
+<!-- ===================== INTERESTS ===================== -->
+
+## 🔭 Interests
+
+| Area | Focus |
+|------|-------|
+| 📊 | **Data Analytics** — Finding meaningful insights from data |
+| 🤖 | **Data Science** — Turning data into intelligent solutions |
+| 🧠 | **Machine Learning** — Exploring predictive models |
+| 📈 | **Business Intelligence** — Supporting better decisions with data |
+| 🗄️ | **Database Management** — Working with structured data |
+| 📉 | **Data Visualization** — Making complex data easy to understand |
+| 💻 | **Problem Solving** — Building practical solutions with code |
+
+---
+
+<!-- ===================== TECH STACK ===================== -->
 
 ## 🛠️ Tech Stack
 
-### 💻 Programming & Data
+### 💻 Programming & Core
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+<p>
+<img src="https://skillicons.dev/icons?i=python,java,js,html,css"/>
+</p>
 
 ### 📊 Data Analysis
 
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+<p>
+<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+<img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white"/>
+</p>
 
-### 📈 Data Visualization
+### 📈 Data Visualization & BI
 
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge)
-![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge)
-![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+<p>
+<img src="https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black"/>
+<img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white"/>
+<img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge"/>
+</p>
 
 ### 🗄️ Database
 
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+<p>
+<img src="https://skillicons.dev/icons?i=mysql"/>
+<img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white"/>
+</p>
 
-## 🤖 Machine Learning
+### 🤖 Machine Learning
 
-![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+<p>
+<img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"/>
+</p>
 
-**Currently Learning:**
-- Regression
-- Classification
-- Clustering
-- Feature Engineering
-### 🔧 Tools
+### 🔧 Tools & Platforms
 
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-
----
-
-## 📊 GitHub Stats
-
-![Ravi's GitHub stats](https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=tokyonight)
+<p>
+<img src="https://skillicons.dev/icons?i=git,github,vscode,linux,jupyter"/>
+</p>
 
 ---
 
-## 🔥 GitHub Streak
-
-![GitHub Streak](https://streak-stats.demolab.com?user=raviraj940&theme=tokyonight)
-
----
-
-## 💻 Most Used Languages
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=tokyonight)
-
----
-## 🚀 Featured Projects
-
-### 🧑‍💻 AttendEase — Face Recognition Attendance System
-
-**Java | Face Recognition | Attendance Management**
-
-A face recognition based attendance management system developed to automate attendance recording.
-
-**Key Features:**
-- Face-based attendance
-- Automated attendance recording
-- Attendance management
-- Java-based application
-
-🔗 [View Project](https://github.com/raviraj940/AttendEase)
-
----
-
-### 📄 PDFNova — PDF Management Platform
-
-**TypeScript | PDF Processing | Web Application**
-
-A modern PDF toolkit designed for working with PDF documents.
-
-**Key Features:**
-- Merge PDF files
-- Split PDF files
-- Compress PDF files
-- Convert PDF files
-- Organize PDF documents
-- Secure PDF files
-
-🔗 [View Project](https://github.com/raviraj940/PDFNova)
+<!-- ===================== CURRENTLY LEARNING ===================== -->
 
 ## 📚 Currently Learning
 
-- Python for Data Analysis
-- Pandas & NumPy
-- SQL & MySQL
-- Power BI
-- Statistics
-- Machine Learning
-- Data Visualization
----
-
-
-## 🎯 Areas of Interest
-
-📊 Data Analytics  
-🤖 Data Science  
-🧠 Machine Learning  
-📈 Business Intelligence  
-🗄️ Database Management  
-📉 Data Visualization
-
----
-
-## 📫 Connect With Me
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_URL)
-
-[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/raviraj940)
-
----
-
-⭐ Thanks for visiting my profile!
+```text
+Python for Data Analysis
+        ↓
+Pandas & NumPy
+        ↓
+SQL & MySQL
+        ↓
+Power BI & Data Visualization
+        ↓
+Statistics
+        ↓
+Machine Learning
+        ↓
+Real-World Data Projects
