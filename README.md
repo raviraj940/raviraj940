@@ -84,9 +84,7 @@ and building data-driven solutions that solve real-world problems.
 
 <ul>
 <li>🚀 I build practical data-driven projects</li>
-<li>📊 I enjoy finding patterns and insights hidden inside data</li>
 <li>🐍 I work with Python for data analysis</li>
-<li>🗄️ I work with SQL and MySQL</li>
 <li>🤖 I'm exploring Machine Learning</li>
 <li>💡 I enjoy turning problems into useful solutions</li>
 </ul>
@@ -124,7 +122,7 @@ and building data-driven solutions that solve real-world problems.
 
 <tr>
 <td align="center">🌐</td>
-<td><b>Web Development</b> — building practical applications</td>
+<!-- <td><b>Web Development</b> — building practical applications</td> -->
 </tr>
 
 <tr>
@@ -152,10 +150,8 @@ and building data-driven solutions that solve real-world problems.
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Java-E76F00?style=flat-square&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
 <img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
+
 
 </p>
 
@@ -184,7 +180,7 @@ and building data-driven solutions that solve real-world problems.
 
 <h3>🌐 Web & Backend</h3>
 
-<p>
+<!-- <p>
 
 <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
 <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
@@ -192,13 +188,13 @@ and building data-driven solutions that solve real-world problems.
 <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"/>
 <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white"/>
 
-</p>
+</p> -->
 
 <h3>🛠️ Tools & Platforms</h3>
 
 <p>
 
-<img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/>
+<!-- <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/> -->
 <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
 <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
@@ -307,10 +303,10 @@ View Project
 
 <ul>
 
-<li>
+<!-- <li>
 ☕ <b>Late Night Ideas</b> —
 My best ideas often arrive when I'm deep into a problem.
-</li>
+</li> -->
 
 <li>
 🧪 <b>Experiment Mindset</b> —
@@ -371,7 +367,7 @@ data projects, or just a good chat about technology and automation.
 <img src="https://img.shields.io/badge/CONNECT%20ON%20LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
-<a href="YOUR_KAGGLE_LINK">
+<a href="https://www.kaggle.com/raviraj940">
 <img src="https://img.shields.io/badge/FIND%20ME%20ON%20KAGGLE-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white"/>
 </a>
 
