@@ -4,7 +4,7 @@
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=200&section=header&text=Hey,%20I'm%20Ravi%20Raj&fontSize=46&fontColor=FFFFFF&fontAlignY=42&desc=MCA%20Data%20Science%20%7C%20CGC%20University%2C%20Mohali&descSize=16&descAlignY=62&descColor=A0CFFF"
+    src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=180&section=header&text=Hey,%20I'm%20Ravi%20Raj&fontSize=42&fontColor=FFFFFF&fontAlignY=40"
     width="100%"
   />
 </p>
@@ -15,7 +15,7 @@
 
 <p align="center">
   <i>
-    🎓 MCA Data Science student at CGC University, Mohali — building data-driven solutions
+    🎓 Computer Science student from India, building data-driven solutions
     and solving real-world problems with Python, AI/ML &amp; SQL.
   </i>
 </p>
@@ -82,7 +82,7 @@
 <hr>
 
 <p>
-I'm <b>Ravi Raj</b>, an <b>MCA Data Science</b> student at <b>CGC University, Mohali</b>, India.
+I'm <b>Ravi Raj</b>, a Computer Science student from India.
 </p>
 
 <p>
@@ -91,7 +91,6 @@ and building data-driven solutions that tackle real-world challenges.
 </p>
 
 <ul>
-<li>🎓 Pursuing <b>MCA in Data Science</b> at CGC University, Mohali</li>
 <li>🚀 I build practical data-driven projects using Python &amp; ML</li>
 <li>🤖 Exploring AI, Machine Learning &amp; intelligent automation</li>
 <li>🗄️ Working with SQL databases and data pipelines</li>
