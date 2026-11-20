@@ -229,36 +229,6 @@ and building data-driven solutions that tackle real-world challenges.
 
 ---
 
-### 🗓️ Contribution Calendar (Live Animated Activity)
-
-<p align="center">
-  <a href="https://htmlpreview.github.io/?https://github.com/raviraj940/raviraj940/blob/main/dashboard/index.html">
-    <img
-      src="./assets/charts/animated_calendar.gif"
-      alt="Ravi Raj's Animated GitHub Contribution Calendar"
-      width="98%"
-    />
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://htmlpreview.github.io/?https://github.com/raviraj940/raviraj940/blob/main/dashboard/index.html">
-    <img src="https://img.shields.io/badge/⚡%20OPEN%20LIVE%20INTERACTIVE%20DASHBOARD-00C6FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Open Live Interactive Dashboard"/>
-  </a>
-</p>
-
-<p align="center">
-  <sub>
-    ✨ <b>Live Blinking Animation:</b> Random contribution squares pulse rapidly (150–300ms) across active coding days.
-    <br>
-    <i>GitHub READMEs render static &amp; animated image formats (GIF/SVG). For the full JavaScript-driven engine with live burst controls, speed sliders, and hover tooltips, click the badge above!</i>
-  </sub>
-</p>
-
-<br>
-
----
-
 ### 📈 GitHub Activity Graph
 
 <p align="center">
