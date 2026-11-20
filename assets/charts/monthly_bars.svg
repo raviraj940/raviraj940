@@ -1,6 +1,71 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="800" height="180">
-  <rect width="800" height="180" rx="16" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
-  <text x="400" y="80" fill="#8b949e" font-size="16" text-anchor="middle" font-family="system-ui,sans-serif">⏳ Chart updating…</text>
-  <text x="400" y="108" fill="#6e7681" font-size="12" text-anchor="middle" font-family="system-ui,sans-serif">Run the GitHub Actions workflow to generate live charts.</text>
-  <text x="400" y="130" fill="#6e7681" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Go to Actions → 📊 GitHub Wrapped → Run workflow</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="800" height="220">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text { font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
+    </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="100%" stop-color="#0072FF"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00C6FF33"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="220" rx="16" fill="url(#bg)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="20" y="28" fill="#e6edf3" font-size="14" font-weight="700">📆 Contributions by Month (2026)</text>
+  <line x1="40" y1="145.0" x2="780" y2="145.0" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="35" y="149.0" fill="#8b949e" font-size="9" text-anchor="end">9</text>
+  <line x1="40" y1="110.0" x2="780" y2="110.0" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="35" y="114.0" fill="#8b949e" font-size="9" text-anchor="end">18</text>
+  <line x1="40" y1="75.0" x2="780" y2="75.0" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="35" y="79.0" fill="#8b949e" font-size="9" text-anchor="end">27</text>
+  <line x1="40" y1="40.0" x2="780" y2="40.0" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="35" y="44.0" fill="#8b949e" font-size="9" text-anchor="end">37</text>
+  <defs><linearGradient id="barG0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="40.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG0)"><title>Jan: 0 contributions</title></rect>
+  <text x="63.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Jan</text>
+  <defs><linearGradient id="barG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="100.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG1)"><title>Feb: 0 contributions</title></rect>
+  <text x="123.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Feb</text>
+  <defs><linearGradient id="barG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="160.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG2)"><title>Mar: 0 contributions</title></rect>
+  <text x="183.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Mar</text>
+  <defs><linearGradient id="barG3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="220.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG3)"><title>Apr: 0 contributions</title></rect>
+  <text x="243.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Apr</text>
+  <defs><linearGradient id="barG4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="280.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG4)"><title>May: 0 contributions</title></rect>
+  <text x="303.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">May</text>
+  <defs><linearGradient id="barG5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="340.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG5)"><title>Jun: 0 contributions</title></rect>
+  <text x="363.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Jun</text>
+  <defs><linearGradient id="barG6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="400.0" y="161.1" width="46" height="18.9" rx="4" fill="url(#barG6)"><title>Jul: 5 contributions</title></rect>
+  <text x="423.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Jul</text>
+  <text x="423.0" y="157.1" fill="#e6edf3" font-size="9" text-anchor="middle">5</text>
+  <defs><linearGradient id="barG7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00C6FF"/><stop offset="100%" stop-color="#0072FF"/></linearGradient></defs>
+  <rect x="460.0" y="104.3" width="46" height="75.7" rx="4" fill="url(#barG7)"><title>Aug: 20 contributions</title></rect>
+  <text x="483.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Aug</text>
+  <text x="483.0" y="100.3" fill="#e6edf3" font-size="9" text-anchor="middle">20</text>
+  <defs><linearGradient id="barG8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00C6FF"/><stop offset="100%" stop-color="#0072FF"/></linearGradient></defs>
+  <rect x="520.0" y="40.0" width="46" height="140.0" rx="4" fill="url(#barG8)"><title>Sep: 37 contributions</title></rect>
+  <text x="543.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Sep</text>
+  <text x="543.0" y="36.0" fill="#e6edf3" font-size="9" text-anchor="middle">37</text>
+  <defs><linearGradient id="barG9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="580.0" y="153.5" width="46" height="26.5" rx="4" fill="url(#barG9)"><title>Oct: 7 contributions</title></rect>
+  <text x="603.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Oct</text>
+  <text x="603.0" y="149.5" fill="#e6edf3" font-size="9" text-anchor="middle">7</text>
+  <defs><linearGradient id="barG10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="640.0" y="119.5" width="46" height="60.5" rx="4" fill="url(#barG10)"><title>Nov: 16 contributions</title></rect>
+  <text x="663.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Nov</text>
+  <text x="663.0" y="115.5" fill="#e6edf3" font-size="9" text-anchor="middle">16</text>
+  <defs><linearGradient id="barG11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect x="700.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG11)"><title>Dec: 0 contributions</title></rect>
+  <text x="723.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Dec</text>
 </svg>

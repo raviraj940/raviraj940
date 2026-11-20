@@ -1,6 +1,86 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="800" height="180">
-  <rect width="800" height="180" rx="16" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
-  <text x="400" y="80" fill="#8b949e" font-size="16" text-anchor="middle" font-family="system-ui,sans-serif">⏳ Chart updating…</text>
-  <text x="400" y="108" fill="#6e7681" font-size="12" text-anchor="middle" font-family="system-ui,sans-serif">Run the GitHub Actions workflow to generate live charts.</text>
-  <text x="400" y="130" fill="#6e7681" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Go to Actions → 📊 GitHub Wrapped → Run workflow</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text { font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
+    </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="100%" stop-color="#0072FF"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00C6FF33"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="420" height="300" rx="16" fill="url(#bg)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="20" y="28" fill="#e6edf3" font-size="14" font-weight="700">⏰ Activity by Weekday (Circular)</text>
+  <text x="20" y="44" fill="#8b949e" font-size="10">Time-of-day data is not available via GitHub API</text>
+  <circle cx="60" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="60" cy="170" r="21.0"
+    fill="none" stroke="#00C6FF" stroke-width="6"
+    stroke-dasharray="17.08 114.87"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="60" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">12%</text>
+  <text x="60" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Mon</text>
+  <text x="60" y="212" fill="#8b949e" font-size="8" text-anchor="middle">11</text>
+  <circle cx="116" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="116" cy="170" r="21.0"
+    fill="none" stroke="#00C6FF" stroke-width="6"
+    stroke-dasharray="27.94 104.01"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="116" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">21%</text>
+  <text x="116" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Tue</text>
+  <text x="116" y="212" fill="#8b949e" font-size="8" text-anchor="middle">18</text>
+  <circle cx="172" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="172" cy="170" r="21.0"
+    fill="none" stroke="#00C6FF" stroke-width="6"
+    stroke-dasharray="17.08 114.87"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="172" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">12%</text>
+  <text x="172" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Wed</text>
+  <text x="172" y="212" fill="#8b949e" font-size="8" text-anchor="middle">11</text>
+  <circle cx="228" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="228" cy="170" r="21.0"
+    fill="none" stroke="#00C6FF" stroke-width="6"
+    stroke-dasharray="6.21 125.74"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="228" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">4%</text>
+  <text x="228" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Thu</text>
+  <text x="228" y="212" fill="#8b949e" font-size="8" text-anchor="middle">4</text>
+  <circle cx="284" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="284" cy="170" r="21.0"
+    fill="none" stroke="#00C6FF" stroke-width="6"
+    stroke-dasharray="17.08 114.87"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="284" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">12%</text>
+  <text x="284" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Fri</text>
+  <text x="284" y="212" fill="#8b949e" font-size="8" text-anchor="middle">11</text>
+  <circle cx="340" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="340" cy="170" r="21.0"
+    fill="none" stroke="#39d353" stroke-width="6"
+    stroke-dasharray="21.73 110.21"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="340" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">16%</text>
+  <text x="340" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Sat</text>
+  <text x="340" y="212" fill="#8b949e" font-size="8" text-anchor="middle">14</text>
+  <circle cx="396" cy="170" r="21.0" fill="none" stroke="#30363d" stroke-width="6"/>
+  <circle cx="396" cy="170" r="21.0"
+    fill="none" stroke="#39d353" stroke-width="6"
+    stroke-dasharray="24.84 107.11"
+    stroke-dashoffset="32.99"
+    stroke-linecap="round"/>
+  <text x="396" y="175" fill="#e6edf3" font-size="9" text-anchor="middle" font-weight="700">18%</text>
+  <text x="396" y="200" fill="#8b949e" font-size="9" text-anchor="middle">Sun</text>
+  <text x="396" y="212" fill="#8b949e" font-size="8" text-anchor="middle">16</text>
 </svg>
