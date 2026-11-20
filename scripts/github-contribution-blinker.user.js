@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         GitHub Contribution Calendar - Fast Random Blinker
 // @namespace    https://github.com/raviraj940
-// @version      1.0.0
-// @description  Smooth, fast, random blinking animation on GitHub's native contribution calendar for @raviraj940
+// @version      2.0.0
+// @description  Smooth, fast, random glowing/blinking animation on GitHub's native contribution calendar for @raviraj940
 // @author       Ravi Raj
-// @match        https://github.com/raviraj940*
-// @match        https://github.com/users/raviraj940/*
+// @match        https://github.com/*
 // @grant        none
 // @run-at       document-idle
 // ==/UserScript==
@@ -13,156 +12,220 @@
 (function () {
   'use strict';
 
-  // Animation configuration matching exact requirements
+  // Config: Fast random blinking animation settings
   const CONFIG = {
-    minActive: 2,         // Min squares blinking simultaneously
-    maxActive: 8,         // Max squares blinking simultaneously
+    minActive: 2,         // Min squares blinking together
+    maxActive: 8,         // Max squares blinking together
     minDuration: 150,     // ms (fast blink duration)
     maxDuration: 300,     // ms
-    minDelay: 50,         // ms (delay between activation bursts)
+    minDelay: 50,         // ms (delay between random cycles)
     maxDelay: 200,        // ms
     glowColors: [
-      '#56ff9f',
       '#00ff88',
-      '#7ee787',
+      '#56ff9f',
       '#39d353',
-      '#b9ffcb'
+      '#7ee787',
+      '#b9ffcb',
+      '#ffffff'
     ]
   };
 
-  // Check prefers-reduced-motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // Skip if user prefers reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  // Inject animation CSS
-  const style = document.createElement('style');
-  style.id = 'gh-calendar-blinker-styles';
-  style.textContent = `
-    @keyframes ghBlinkGlow {
-      0% {
-        filter: brightness(1) drop-shadow(0 0 0px transparent);
-        transform: scale(1);
+  // Inject CSS styles for both SVG <rect> and HTML <td>/<div> calendar cells
+  const STYLE_ID = 'gh-calendar-blinker-styles';
+  let styleEl = document.getElementById(STYLE_ID);
+  if (!styleEl) {
+    styleEl = document.createElement('style');
+    styleEl.id = STYLE_ID;
+    styleEl.textContent = `
+      @keyframes ghFastBlinkSvg {
+        0% {
+          filter: brightness(1) drop-shadow(0 0 0px transparent);
+          transform: scale(1);
+        }
+        50% {
+          filter: brightness(2) drop-shadow(0 0 8px #00ff88);
+          transform: scale(1.22);
+        }
+        100% {
+          filter: brightness(1) drop-shadow(0 0 0px transparent);
+          transform: scale(1);
+        }
       }
-      50% {
-        filter: brightness(1.7) drop-shadow(0 0 6px #00ff88);
-        transform: scale(1.15);
-      }
-      100% {
-        filter: brightness(1) drop-shadow(0 0 0px transparent);
-        transform: scale(1);
-      }
-    }
 
-    .gh-blinking-cell {
-      animation-name: ghBlinkGlow !important;
-      animation-timing-function: ease-in-out !important;
-      animation-iteration-count: 1 !important;
-      transform-origin: center center !important;
-      z-index: 10 !important;
-    }
-  `;
-  document.head.appendChild(style);
-
-  let activeTimeouts = new Set();
-  let isRunning = true;
-
-  function findContributionCells() {
-    // Target GitHub's native contribution calendar squares (SVG rects or HTML td/buttons)
-    const selectors = [
-      '.js-calendar-graph-table rect.ContributionCalendar-day',
-      '.ContributionCalendar-grid td.ContributionCalendar-day',
-      'table.ContributionCalendar-grid [data-date]',
-      '.js-yearly-contributions [data-level]:not([data-level="0"])',
-      'rect.ContributionCalendar-day[data-level]:not([data-level="0"])'
-    ];
-
-    for (const sel of selectors) {
-      const nodes = Array.from(document.querySelectorAll(sel));
-      // Prefer active (green) squares, fallback to all if needed
-      const activeNodes = nodes.filter(n => {
-        const level = n.getAttribute('data-level');
-        return level && level !== '0';
-      });
-      if (activeNodes.length >= 3) {
-        return activeNodes;
+      @keyframes ghFastBlinkHtml {
+        0% {
+          filter: brightness(1) drop-shadow(0 0 0px transparent);
+          transform: scale(1);
+        }
+        50% {
+          filter: brightness(2.2) drop-shadow(0 0 10px #00ff88);
+          transform: scale(1.25);
+          outline: 1.5px solid #00ff88;
+        }
+        100% {
+          filter: brightness(1) drop-shadow(0 0 0px transparent);
+          transform: scale(1);
+          outline: none;
+        }
       }
-      if (nodes.length >= 10) {
-        return nodes;
+
+      rect.gh-blinking-cell {
+        transform-box: fill-box !important;
+        transform-origin: center center !important;
+        animation-name: ghFastBlinkSvg !important;
+        animation-timing-function: ease-in-out !important;
+        animation-iteration-count: 1 !important;
       }
-    }
-    return [];
+
+      td.gh-blinking-cell,
+      div.gh-blinking-cell {
+        position: relative !important;
+        z-index: 5 !important;
+        animation-name: ghFastBlinkHtml !important;
+        animation-timing-function: ease-in-out !important;
+        animation-iteration-count: 1 !important;
+      }
+    `;
+    (document.head || document.documentElement).appendChild(styleEl);
   }
 
-  function randomBetween(min, max) {
+  let activeTimer = null;
+  let isRunning = true;
+
+  // Locate all active calendar day elements (supports all GitHub web layouts)
+  function findCells() {
+    // Selectors covering modern table-based and legacy SVG-based GitHub calendars
+    const selectors = [
+      'table.ContributionCalendar-grid td.ContributionCalendar-day',
+      '.js-calendar-graph-table rect.ContributionCalendar-day',
+      '.ContributionCalendar-grid [data-date]',
+      '.js-yearly-contributions [data-level]',
+      '[data-testid="contribution-calendar-cell"]'
+    ];
+
+    let found = [];
+    for (const sel of selectors) {
+      const nodes = Array.from(document.querySelectorAll(sel));
+      if (nodes.length > 0) {
+        found = nodes;
+        break;
+      }
+    }
+
+    if (found.length === 0) return [];
+
+    // Filter to active contribution days (data-level > 0 or has background color)
+    const active = found.filter(el => {
+      const level = el.getAttribute('data-level');
+      if (level && level !== '0') return true;
+      // In table cells, check inline or computed style
+      const bg = el.style.backgroundColor || el.getAttribute('fill') || '';
+      return bg && !bg.includes('#161b22') && !bg.includes('rgba(255, 255, 255, 0.05)');
+    });
+
+    return active.length >= 3 ? active : found;
+  }
+
+  function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function blinkSquare(cell) {
-    if (!isRunning || !cell) return;
+  function blinkCell(cell) {
+    if (!cell || !isRunning) return;
 
-    const duration = randomBetween(CONFIG.minDuration, CONFIG.maxDuration);
-    const color = CONFIG.glowColors[Math.floor(Math.random() * CONFIG.glowColors.length)];
+    const duration = randomInt(CONFIG.minDuration, CONFIG.maxDuration);
+    const glow = CONFIG.glowColors[Math.floor(Math.random() * CONFIG.glowColors.length)];
 
-    cell.style.animationDuration = `${duration}ms`;
-    cell.classList.add('gh-blinking-cell');
+    cell.style.animationDuration = duration + 'ms';
 
-    const tid = setTimeout(() => {
-      cell.classList.remove('gh-blinking-cell');
-      cell.style.animationDuration = '';
-      activeTimeouts.delete(tid);
-    }, duration);
+    const isSvg = cell.tagName.toLowerCase() === 'rect';
+    const originalFill = cell.getAttribute('fill');
+    const originalBg = cell.style.backgroundColor;
 
-    activeTimeouts.add(tid);
-  }
-
-  function animationLoop() {
-    if (!isRunning) return;
-
-    const cells = findContributionCells();
-    if (cells.length > 0) {
-      const count = randomBetween(CONFIG.minActive, Math.min(CONFIG.maxActive, cells.length));
-      // Pick random distinct cells
-      const shuffled = cells.slice().sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, count);
-
-      selected.forEach(cell => blinkSquare(cell));
+    if (isSvg) {
+      cell.setAttribute('fill', glow);
+    } else {
+      cell.style.backgroundColor = glow;
     }
 
-    const nextDelay = randomBetween(CONFIG.minDelay, CONFIG.maxDelay);
-    const tid = setTimeout(animationLoop, nextDelay);
-    activeTimeouts.add(tid);
+    cell.classList.add('gh-blinking-cell');
+
+    setTimeout(() => {
+      cell.classList.remove('gh-blinking-cell');
+      cell.style.animationDuration = '';
+      if (isSvg) {
+        if (originalFill) cell.setAttribute('fill', originalFill);
+        else cell.removeAttribute('fill');
+      } else {
+        cell.style.backgroundColor = originalBg;
+      }
+    }, duration);
   }
 
-  // Handle page visibility
+  function loop() {
+    if (!isRunning) return;
+
+    const cells = findCells();
+    if (cells.length > 0) {
+      const count = randomInt(CONFIG.minActive, Math.min(CONFIG.maxActive, cells.length));
+      // Shuffle & pick distinct
+      const pool = cells.slice().sort(() => 0.5 - Math.random());
+      const selected = pool.slice(0, count);
+
+      selected.forEach(c => blinkCell(c));
+    }
+
+    const nextDelay = randomInt(CONFIG.minDelay, CONFIG.maxDelay);
+    activeTimer = setTimeout(loop, nextDelay);
+  }
+
+  function start() {
+    clearTimeout(activeTimer);
+    isRunning = true;
+    loop();
+  }
+
+  function stop() {
+    isRunning = false;
+    clearTimeout(activeTimer);
+  }
+
+  // Handle visibility changes
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      isRunning = false;
-      activeTimeouts.forEach(clearTimeout);
-      activeTimeouts.clear();
-    } else {
-      isRunning = true;
-      animationLoop();
+    if (document.hidden) stop();
+    else start();
+  });
+
+  // Handle GitHub Turbo / SPA page transitions
+  document.addEventListener('turbo:load', start);
+  document.addEventListener('pjax:end', start);
+
+  // Watch for dynamic DOM rendering of the calendar
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.addedNodes.length > 0) {
+        if (document.querySelector('.js-calendar-graph, .ContributionCalendar-grid, .js-yearly-contributions')) {
+          start();
+          break;
+        }
+      }
     }
   });
 
-  // Start after GitHub finishes rendering the contribution graph
-  function init() {
-    const calendar = document.querySelector('.js-yearly-contributions, .js-calendar-graph');
-    if (calendar) {
-      animationLoop();
-    } else {
-      // Retry in case GitHub loaded asynchronously
-      let retries = 0;
-      const checker = setInterval(() => {
-        retries++;
-        if (document.querySelector('.js-yearly-contributions, .js-calendar-graph') || retries > 10) {
-          clearInterval(checker);
-          animationLoop();
-        }
-      }, 500);
-    }
-  }
+  observer.observe(document.body || document.documentElement, {
+    childList: true,
+    subtree: true
+  });
 
-  init();
+  // Initial trigger
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
 })();
