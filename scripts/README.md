@@ -8,7 +8,6 @@ dashboard in the profile README.
 | File | Purpose |
 |------|---------|
 | `generate_stats.py` | Main script — fetches GitHub data via GraphQL API and generates SVG charts |
-| `github-contribution-blinker.user.js` | Tampermonkey / Chrome userscript for fast random blinking animation directly on `github.com/raviraj940` |
 | `requirements.txt` | Python dependencies (`requests`) |
 
 ## How it works
