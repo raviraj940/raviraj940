@@ -8,7 +8,9 @@ dashboard in the profile README.
 | File | Purpose |
 |------|---------|
 | `generate_stats.py` | Main script — fetches GitHub data via GraphQL API and generates SVG charts |
-| `requirements.txt` | Python dependencies (`requests`) |
+| `generate_animated_calendar.py` | Generates animated GIF and animated SVG contribution calendars |
+| `build_dashboard.py` | Generates the standalone interactive HTML dashboard (`dashboard/index.html`) |
+| `requirements.txt` | Python dependencies (`requests`, `pillow`) |
 
 ## How it works
 
