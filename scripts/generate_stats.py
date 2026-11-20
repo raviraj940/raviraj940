@@ -15,9 +15,14 @@ from collections import defaultdict
 
 # ─── CONFIG ────────────────────────────────────────────────────────────────────
 USERNAME   = "raviraj940"
-GH_TOKEN   = os.environ.get("GH_TOKEN", "")
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "assets", "charts")
+# Accept GH_TOKEN or the auto-provided GITHUB_TOKEN
+GH_TOKEN   = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN", "")
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "charts")
 GRAPHQL_URL = "https://api.github.com/graphql"
+
+if not GH_TOKEN:
+    print("ERROR: Neither GH_TOKEN nor GITHUB_TOKEN is set.", file=sys.stderr)
+    sys.exit(1)
 
 HEADERS = {
     "Authorization": f"Bearer {GH_TOKEN}",
