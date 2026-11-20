@@ -446,29 +446,52 @@ def gen_monthly_bars(monthly: dict, year: int) -> str:
 # ── 5. Weekday bar chart ──────────────────────────────────────────────────────
 
 def gen_weekday_bars(weekday: dict) -> str:
-    W, H = 480, 200
+    # Medium format: 660px wide, balanced bar widths
+    W, H   = 660, 240
     order  = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     values = [weekday.get(d, 0) for d in order]
     max_v  = max(values) or 1
 
-    BAR_W  = 44
-    GAP    = 14
-    LEFT   = 40
-    BOTTOM = H - 40
-    CHART_H = H - 70
+    BAR_W   = 56   # medium bar width
+    GAP     = 20   # spacing between bars
+    LEFT    = 55   # left padding for y-axis labels
+    BOTTOM  = H - 48
+    CHART_H = H - 90
 
     svg  = svg_header(W, H)
-    svg += f'  <text x="20" y="28" fill="#e6edf3" font-size="14" font-weight="700">📅 Contributions by Weekday</text>\n'
+    svg += f'  <text x="24" y="30" fill="#e6edf3" font-size="15" font-weight="700">📅 Contributions by Weekday</text>\n'
+
+    # Gridlines + y-axis labels
+    for pct in [0.25, 0.5, 0.75, 1.0]:
+        gy = BOTTOM - pct * CHART_H
+        v  = int(pct * max_v)
+        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{W - 20}" y2="{gy:.1f}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>\n'
+        svg += f'  <text x="{LEFT - 8}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" text-anchor="end">{v}</text>\n'
 
     colors = ["#00C6FF","#00C6FF","#00C6FF","#00C6FF","#00C6FF","#39d353","#39d353"]
+    weekend_label = ["", "", "", "", "", "Weekend", "Weekend"]
+
     for i, (v, lbl) in enumerate(zip(values, order)):
         x     = LEFT + i * (BAR_W + GAP)
-        bar_h = (v / max_v) * CHART_H
+        bar_h = max((v / max_v) * CHART_H, 2)   # min 2px so zero is visible
         y     = BOTTOM - bar_h
-        svg  += f'  <rect x="{x}" y="{y:.1f}" width="{BAR_W}" height="{bar_h:.1f}" rx="4" fill="{colors[i]}"><title>{lbl}: {v}</title></rect>\n'
-        svg  += f'  <text x="{x + BAR_W/2}" y="{BOTTOM + 15}" fill="#8b949e" font-size="11" text-anchor="middle">{lbl}</text>\n'
-        if v > 0:
-            svg += f'  <text x="{x + BAR_W/2}" y="{y - 5:.1f}" fill="#e6edf3" font-size="10" text-anchor="middle">{v}</text>\n'
+        color = colors[i]
+
+        # Bar with rounded top
+        svg += f'  <rect x="{x:.1f}" y="{y:.1f}" width="{BAR_W}" height="{bar_h:.1f}" rx="5" fill="{color}" opacity="0.90"><title>{lbl}: {v} contributions</title></rect>\n'
+
+        # Count label above bar
+        label_y = y - 7 if v > 0 else BOTTOM - 14
+        svg += f'  <text x="{x + BAR_W/2:.1f}" y="{label_y:.1f}" fill="#e6edf3" font-size="12" font-weight="700" text-anchor="middle">{v}</text>\n'
+
+        # Day name label
+        svg += f'  <text x="{x + BAR_W/2:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="12" text-anchor="middle">{lbl}</text>\n'
+
+    # Legend
+    svg += f'  <circle cx="{W-130}" cy="22" r="5" fill="#00C6FF"/>\n'
+    svg += f'  <text x="{W-121}" y="26" fill="#8b949e" font-size="10">Weekday</text>\n'
+    svg += f'  <circle cx="{W-68}" cy="22" r="5" fill="#39d353"/>\n'
+    svg += f'  <text x="{W-59}" y="26" fill="#8b949e" font-size="10">Weekend</text>\n'
 
     svg += svg_footer()
     return svg
@@ -477,48 +500,67 @@ def gen_weekday_bars(weekday: dict) -> str:
 # ── 6. Top repos card ─────────────────────────────────────────────────────────
 
 def gen_top_repos(repos: list, commit_by_repo: list) -> str:
-    # merge commit counts into repos
     commit_map = {
         item["repository"]["name"]: item["contributions"]["totalCount"]
         for item in commit_by_repo
     }
     enriched = []
     for r in repos:
-        name  = r["name"]
-        stars = r.get("stargazerCount", 0)
-        forks = r.get("forkCount", 0)
-        lang  = (r.get("primaryLanguage") or {}).get("name", "")
+        name    = r["name"]
+        stars   = r.get("stargazerCount", 0)
+        forks   = r.get("forkCount", 0)
+        lang    = (r.get("primaryLanguage") or {}).get("name", "")
         commits = commit_map.get(name, 0)
         enriched.append((name, stars, forks, lang, commits))
 
     enriched.sort(key=lambda x: -x[4])
     top = enriched[:5]
 
-    W   = 800
-    ROW = 54
-    H   = 50 + len(top) * ROW + 20
+    # Fixed column positions — nothing bleeds outside the card
+    W        = 860
+    ROW      = 64
+    H        = 54 + len(top) * ROW + 16
+    RANK_CX  = 34          # rank circle center-x
+    NAME_X   = 58          # repo name start
+    BAR_X    = 58          # progress bar start
+    BAR_MAX  = 320         # max bar width (stays well inside the card)
+    LANG_X   = 420         # language dot + name column
+    STAT_X   = W - 20      # stars/forks/commits, right-aligned
 
     svg  = svg_header(W, H)
-    svg += f'  <text x="20" y="30" fill="#e6edf3" font-size="14" font-weight="700">🏆 Most Active Repositories</text>\n'
+    svg += f'  <text x="20" y="34" fill="#e6edf3" font-size="15" font-weight="700">🏆 Most Active Repositories</text>\n'
 
     for i, (name, stars, forks, lang, commits) in enumerate(top):
         y     = 50 + i * ROW
         rank  = i + 1
         color = lang_color(lang)
         pct   = commits / (top[0][4] or 1)
-        bar_w = int(pct * 350)
+        bar_w = max(int(pct * BAR_MAX), 4)
 
-        svg += f'''
-  <rect x="12" y="{y}" width="{W-24}" height="{ROW-6}" rx="8"
-        fill="#21262d" stroke="#30363d" stroke-width="1"/>
-  <text x="36" y="{y+20}" fill="#8b949e" font-size="12" font-weight="700">#{rank}</text>
-  <text x="64" y="{y+20}" fill="#e6edf3" font-size="12" font-weight="700">{escape_xml(name)}</text>
-  <rect x="64" y="{y+28}" width="{bar_w}" height="6" rx="3" fill="{color}" opacity="0.7"/>
-  <text x="{W-200}" y="{y+20}" fill="#8b949e" font-size="11">⭐ {stars}  🍴 {forks}  💾 {commits} commits</text>
-'''
+        # Card background
+        svg += f'  <rect x="12" y="{y}" width="{W-24}" height="{ROW-6}" rx="8" fill="#21262d" stroke="#30363d" stroke-width="1"/>\n'
+
+        # Rank badge
+        svg += f'  <circle cx="{RANK_CX}" cy="{y+26}" r="12" fill="#30363d"/>\n'
+        svg += f'  <text x="{RANK_CX}" y="{y+30}" fill="#8b949e" font-size="11" font-weight="700" text-anchor="middle">#{rank}</text>\n'
+
+        # Repo name — truncate if too long (max 26 chars before LANG_X)
+        display_name = (name[:24] + "…") if len(name) > 24 else name
+        svg += f'  <text x="{NAME_X}" y="{y+22}" fill="#e6edf3" font-size="13" font-weight="700">{escape_xml(display_name)}</text>\n'
+
+        # Progress bar under name
+        svg += f'  <rect x="{BAR_X}" y="{y+32}" width="{bar_w}" height="5" rx="2" fill="{color}" opacity="0.75"/>\n'
+        svg += f'  <text x="{BAR_X}" y="{y+48}" fill="#6e7681" font-size="9">{int(pct*100)}% of top activity</text>\n'
+
+        # Language dot + name (fixed column, truncated)
         if lang:
-            svg += f'  <circle cx="{W-30}" cy="{y+20}" r="5" fill="{color}"/>\n'
-            svg += f'  <text x="{W-22}" y="{y+24}" fill="#8b949e" font-size="10">{escape_xml(lang)}</text>\n'
+            lang_disp = (lang[:14] + "…") if len(lang) > 14 else lang
+            svg += f'  <circle cx="{LANG_X}" cy="{y+22}" r="5" fill="{color}"/>\n'
+            svg += f'  <text x="{LANG_X+12}" y="{y+26}" fill="#8b949e" font-size="11">{escape_xml(lang_disp)}</text>\n'
+
+        # Stats — right-aligned, all on one line
+        stats_str = f"⭐ {stars}  🍴 {forks}  💾 {commits} commits"
+        svg += f'  <text x="{STAT_X}" y="{y+26}" fill="#8b949e" font-size="11" text-anchor="end">{escape_xml(stats_str)}</text>\n'
 
     svg += svg_footer()
     return svg
