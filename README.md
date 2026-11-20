@@ -221,127 +221,141 @@ and building data-driven solutions that tackle real-world challenges.
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=4&section=header"
-    width="96%"
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=6&section=header"
+    width="100%"
   />
 </p>
 
 <br>
+
+---
 
 ### 🗓️ Contribution Calendar
 
 <p align="center">
   <img
     src="https://ghchart.romanov.work/00C6FF/raviraj940"
-    alt="Ravi Raj's GitHub Contribution Calendar"
-    width="100%"
+    alt="Ravi Raj GitHub Contributions"
+    width="98%"
   />
 </p>
 
 <br>
+
+---
 
 ### 📈 GitHub Activity Graph
 
 <p align="center">
   <img
-    src="https://github-readme-activity-graph.vercel.app/graph?username=raviraj940&bg_color=0d1117&color=00C6FF&line=0072FF&point=ffffff&area=true&hide_border=true&area_color=0072FF"
+    src="https://github-readme-activity-graph.vercel.app/graph?username=raviraj940&bg_color=0d1117&color=00C6FF&line=0072FF&point=ffffff&area=true&hide_border=true&area_color=0d3b6b&custom_title=Ravi%20Raj%20GitHub%20Activity%20Graph&radius=6"
     alt="GitHub Activity Graph"
-    width="100%"
+    width="98%"
   />
 </p>
 
 <br>
 
-### 📊 GitHub Stats Dashboard
+---
+
+### 📊 GitHub Stats  &  🔥 Streak
 
 <p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&icon_color=0072FF&text_color=e6edf3&ring_color=0072FF&count_private=true&include_all_commits=true"
-    height="195"
-    alt="GitHub Stats"
-  />
-  <img
-    src="https://github-readme-streak-stats.herokuapp.com/?user=raviraj940&theme=github-dark-blue&hide_border=true&background=0d1117&ring=00C6FF&fire=0072FF&currStreakLabel=00C6FF&sideLabels=8b949e&dates=8b949e&stroke=30363d"
-    height="195"
-    alt="GitHub Streak Stats"
-  />
+  <a href="https://github.com/raviraj940">
+    <img
+      src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&icon_color=0072FF&text_color=e6edf3&ring_color=0072FF&count_private=true&include_all_commits=true&card_width=420&rank_icon=github&show=prs_merged_percentage"
+      height="200"
+      alt="GitHub Stats"
+    />
+  </a>
+  <a href="https://github.com/raviraj940">
+    <img
+      src="https://github-readme-streak-stats.herokuapp.com/?user=raviraj940&theme=github-dark-blue&hide_border=true&background=0d1117&ring=00C6FF&fire=0072FF&currStreakLabel=00C6FF&sideLabels=8b949e&dates=8b949e&stroke=30363d&card_width=420"
+      height="200"
+      alt="GitHub Streak"
+    />
+  </a>
 </p>
 
 <br>
+
+---
 
 ### 🧑‍💻 Most Used Languages
 
 <p align="center">
   <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=donut&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=8&size_weight=0.5&count_weight=0.5"
-    height="220"
-    alt="Top Languages Donut"
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=donut-vertical&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=8&size_weight=0.5&count_weight=0.5&card_width=350"
+    height="260"
+    alt="Top Languages"
   />
+  &nbsp;&nbsp;&nbsp;
   <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=8"
-    height="220"
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=10&card_width=380"
+    height="260"
     alt="Top Languages Compact"
   />
 </p>
 
 <br>
 
+---
+
 ### 🏆 GitHub Trophies
 
 <p align="center">
   <img
-    src="https://github-profile-trophy.vercel.app/?username=raviraj940&theme=onestar&no-frame=true&no-bg=true&row=1&column=7&margin-w=4"
+    src="https://github-profile-trophy.vercel.app/?username=raviraj940&theme=onestar&no-frame=true&no-bg=true&row=1&column=7&margin-w=6&margin-h=6"
     alt="GitHub Trophies"
-    width="100%"
+    width="98%"
   />
 </p>
 
 <br>
 
-### 📈 Contribution Streak & Summary
+---
+
+### 📋 Contribution Summary
 
 <p align="center">
   <img
-    src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=161b22&title_color=00C6FF&icon_color=39d353&text_color=e6edf3&custom_title=📊+Contribution+Summary&include_all_commits=true&count_private=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage"
-    width="100%"
+    src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=161b22&title_color=00C6FF&icon_color=39d353&text_color=e6edf3&custom_title=Contribution+Summary+%E2%80%94+raviraj940&include_all_commits=true&count_private=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&card_width=700&rank_icon=percentile"
+    width="720"
     alt="Contribution Summary"
   />
 </p>
 
 <br>
 
+---
+
 ### 🤖 Auto-Updated Analytics Charts
 
-> These charts are auto-generated from the **GitHub GraphQL API** and updated daily by [GitHub Actions](.github/workflows/github-wrapped.yml).  
-> **Heatmap, bar charts and repo rankings** are generated by the workflow and stored in `assets/charts/`.
+> 📌 These charts are generated from the **GitHub GraphQL API** and auto-committed daily by [GitHub Actions](.github/workflows/github-wrapped.yml).
 
-<table align="center">
-<tr>
-<td align="center" width="50%">
+<br>
 
-**📆 Monthly Contributions**
+<p align="center"><b>📆 Monthly Contributions</b></p>
 
-<img src="./assets/charts/monthly_bars.svg" alt="Monthly Contributions" width="100%"/>
+<p align="center">
+  <img src="./assets/charts/monthly_bars.svg" alt="Monthly Contributions" width="98%"/>
+</p>
 
-</td>
-<td align="center" width="50%">
+<br>
 
-**📅 Contributions by Weekday**
+<p align="center"><b>📅 Contributions by Weekday</b></p>
 
-<img src="./assets/charts/weekday_bars.svg" alt="Weekday Contributions" width="100%"/>
+<p align="center">
+  <img src="./assets/charts/weekday_bars.svg" alt="Weekday Contributions" width="98%"/>
+</p>
 
-</td>
-</tr>
-<tr>
-<td align="center" colspan="2">
+<br>
 
-**🏆 Most Active Repositories**
+<p align="center"><b>🏆 Most Active Repositories</b></p>
 
-<img src="./assets/charts/top_repos.svg" alt="Top Repositories" width="100%"/>
-
-</td>
-</tr>
-</table>
+<p align="center">
+  <img src="./assets/charts/top_repos.svg" alt="Top Repositories" width="98%"/>
+</p>
 
 <hr>
 
