@@ -1,0 +1,94 @@
+name: 📊 GitHub Wrapped – Analytics Generator
+
+on:
+  # Run daily at 02:30 UTC
+  schedule:
+    - cron: '30 2 * * *'
+
+  # Allow manual triggers from the Actions tab
+  workflow_dispatch:
+    inputs:
+      force_regenerate:
+        description: 'Force chart regeneration even if no new commits'
+        required: false
+        default: 'false'
+        type: boolean
+
+  # Also run on pushes to main so charts are always up to date
+  push:
+    branches: [main, master]
+    paths-ignore:
+      - 'assets/**'
+      - 'README.md'
+
+permissions:
+  contents: write   # needed to commit generated charts back to the repo
+
+jobs:
+  generate-analytics:
+    name: Generate GitHub Wrapped Charts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # ── 1. Checkout the repository ──────────────────────────────────────────
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
+
+      # ── 2. Set up Python ────────────────────────────────────────────────────
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # ── 3. Install dependencies ──────────────────────────────────────────────
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      # ── 4. Create output directory ────────────────────────────────────────────
+      - name: 📁 Prepare output directories
+        run: mkdir -p assets/charts
+
+      # ── 5. Generate charts ───────────────────────────────────────────────────
+      - name: 📊 Generate analytics charts
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python scripts/generate_stats.py
+
+      # ── 6. Verify outputs ────────────────────────────────────────────────────
+      - name: ✅ Verify generated files
+        run: |
+          echo "Generated files:"
+          ls -lh assets/charts/
+          # Check all expected SVGs exist
+          for f in heatmap.svg summary.svg languages.svg monthly_bars.svg weekday_bars.svg top_repos.svg coding_time.svg; do
+            if [ -f "assets/charts/$f" ]; then
+              echo "  ✔ $f ($(wc -c < assets/charts/$f) bytes)"
+            else
+              echo "  ✗ MISSING: $f"
+              exit 1
+            fi
+          done
+
+      # ── 7. Commit and push charts ────────────────────────────────────────────
+      - name: 💾 Commit updated charts
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name  "github-actions[bot]"
+          git add assets/charts/
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            git commit -m "📊 chore: update GitHub Wrapped charts [$TIMESTAMP]"
+            git push
+            echo "Charts committed and pushed successfully."
+          fi

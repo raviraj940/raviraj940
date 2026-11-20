@@ -4,19 +4,19 @@
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=180&section=header&text=Hey,%20I'm%20Ravi%20Raj&fontSize=42&fontColor=FFFFFF&fontAlignY=40"
+    src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=200&section=header&text=Hey,%20I'm%20Ravi%20Raj&fontSize=46&fontColor=FFFFFF&fontAlignY=42&desc=MCA%20Data%20Science%20%7C%20CGC%20University%2C%20Mohali&descSize=16&descAlignY=62&descColor=A0CFFF"
     width="100%"
   />
 </p>
 
 <h2 align="center">
-  <font color="#00E5FF">Problem Solver</font>
+  <font color="#00E5FF">Problem Solver · Data Explorer · ML Enthusiast</font>
 </h2>
 
 <p align="center">
   <i>
-    🎓 Computer Science student from India, building data-driven solutions
-    and solving real-world problems.
+    🎓 MCA Data Science student at CGC University, Mohali — building data-driven solutions
+    and solving real-world problems with Python, AI/ML &amp; SQL.
   </i>
 </p>
 
@@ -32,7 +32,7 @@
 <img src="https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
-<a href="YOUR_KAGGLE_LINK">
+<a href="https://www.kaggle.com/raviraj940">
 <img src="https://img.shields.io/badge/KAGGLE-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white"/>
 </a>
 
@@ -48,6 +48,14 @@
 <img src="https://img.shields.io/badge/GMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 
+<a href="https://github.com/raviraj940">
+<img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+</p>
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=raviraj940&label=Profile%20views&color=0072FF&style=flat" />
 </p>
 
 <hr>
@@ -58,7 +66,7 @@
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=rect&color=0:4F6BFF,100:9B4DFF&height=30&section=header"
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:4F6BFF,100:9B4DFF&height=4&section=header"
     width="96%"
   />
 </p>
@@ -74,19 +82,21 @@
 <hr>
 
 <p>
-I'm <b>Ravi Raj</b>, a Computer Science student from India.
+I'm <b>Ravi Raj</b>, an <b>MCA Data Science</b> student at <b>CGC University, Mohali</b>, India.
 </p>
 
 <p>
 I enjoy working with data, solving problems, discovering meaningful insights,
-and building data-driven solutions that solve real-world problems.
+and building data-driven solutions that tackle real-world challenges.
 </p>
 
 <ul>
-<li>🚀 I build practical data-driven projects</li>
-<li>🐍 I work with Python for data analysis</li>
-<li>🤖 I'm exploring Machine Learning</li>
-<li>💡 I enjoy turning problems into useful solutions</li>
+<li>🎓 Pursuing <b>MCA in Data Science</b> at CGC University, Mohali</li>
+<li>🚀 I build practical data-driven projects using Python &amp; ML</li>
+<li>🤖 Exploring AI, Machine Learning &amp; intelligent automation</li>
+<li>🗄️ Working with SQL databases and data pipelines</li>
+<li>☕ I enjoy working with Java for object-oriented system design</li>
+<li>💡 I enjoy turning complex problems into useful, clean solutions</li>
 </ul>
 
 <hr>
@@ -112,7 +122,22 @@ and building data-driven solutions that solve real-world problems.
 
 <tr>
 <td align="center">🤖</td>
-<td><b>AI & ML</b> — building models that solve real problems</td>
+<td><b>AI &amp; ML</b> — building models that solve real problems</td>
+</tr>
+
+<tr>
+<td align="center">🐍</td>
+<td><b>Python</b> — data analysis, scripting and automation</td>
+</tr>
+
+<tr>
+<td align="center">🗄️</td>
+<td><b>SQL</b> — querying, transforming and managing data</td>
+</tr>
+
+<tr>
+<td align="center">☕</td>
+<td><b>Java</b> — object-oriented software development</td>
 </tr>
 
 <tr>
@@ -121,13 +146,8 @@ and building data-driven solutions that solve real-world problems.
 </tr>
 
 <tr>
-<td align="center">🌐</td>
-<!-- <td><b>Web Development</b> — building practical applications</td> -->
-</tr>
-
-<tr>
 <td align="center">🛠️</td>
-<td><b>Tool Building</b> — solving problems with code</td>
+<td><b>Tool Building</b> — solving problems with clean, purposeful code</td>
 </tr>
 
 </table>
@@ -144,18 +164,18 @@ and building data-driven solutions that solve real-world problems.
 
 <hr>
 
-<h3>💻 Languages & Core</h3>
+<h3>💻 Languages &amp; Core</h3>
 
 <p>
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Java-E76F00?style=flat-square&logo=openjdk&logoColor=white"/>
 <img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
-
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
 
 </p>
 
-<h3>📊 Data & Analysis</h3>
+<h3>📊 Data &amp; Analysis</h3>
 
 <p>
 
@@ -167,7 +187,7 @@ and building data-driven solutions that solve real-world problems.
 
 </p>
 
-<h3>🤖 AI & Machine Learning</h3>
+<h3>🤖 AI &amp; Machine Learning</h3>
 
 <p>
 
@@ -178,28 +198,121 @@ and building data-driven solutions that solve real-world problems.
 
 </p>
 
-<h3>🌐 Web & Backend</h3>
-
-<!-- <p>
-
-<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
-<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"/>
-<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white"/>
-
-</p> -->
-
-<h3>🛠️ Tools & Platforms</h3>
+<h3>🛠️ Tools &amp; Platforms</h3>
 
 <p>
 
-<!-- <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/> -->
 <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white"/>
 <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
 <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
 
+</p>
+
+<hr>
+
+<!-- ========================= -->
+<!--   GITHUB WRAPPED SECTION  -->
+<!-- ========================= -->
+
+## 📊 GitHub Wrapped – My Coding Journey
+
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=4&section=header"
+    width="96%"
+  />
+</p>
+
+> **🤖 Auto-updated daily by [GitHub Actions](.github/workflows/github-wrapped.yml)**  
+> Charts are generated fresh from the GitHub GraphQL API every 24 hours.  
+> If charts appear blank, the first Action run hasn't completed yet — trigger it manually from the **Actions** tab.
+
+<br>
+
+### 🗓️ Contribution Calendar
+
+<p align="center">
+  <img src="./assets/charts/heatmap.svg" alt="GitHub Contribution Heatmap" width="100%"/>
+</p>
+
+<br>
+
+### 📈 Yearly Summary
+
+<p align="center">
+  <img src="./assets/charts/summary.svg" alt="GitHub Wrapped Summary" width="100%"/>
+</p>
+
+<br>
+
+### 📆 Contributions by Month
+
+<p align="center">
+  <img src="./assets/charts/monthly_bars.svg" alt="Monthly Contributions" width="100%"/>
+</p>
+
+<br>
+
+### 📅 Contributions by Weekday
+
+<p align="center">
+  <img src="./assets/charts/weekday_bars.svg" alt="Weekday Contributions" width="100%"/>
+</p>
+
+<br>
+
+### 🧑‍💻 Top Languages
+
+<p align="center">
+  <img src="./assets/charts/languages.svg" alt="Most Used Languages" width="420"/>
+</p>
+
+<br>
+
+### ⏰ Activity Distribution (by Weekday)
+
+<p align="center">
+  <img src="./assets/charts/coding_time.svg" alt="Activity by Weekday" width="440"/>
+</p>
+
+> _Note: GitHub's public API does not expose time-of-day contribution data,  
+> so this chart shows weekday distribution as a proxy for activity patterns._
+
+<br>
+
+### 🏆 Most Active Repositories
+
+<p align="center">
+  <img src="./assets/charts/top_repos.svg" alt="Most Active Repositories" width="100%"/>
+</p>
+
+<br>
+
+### 🌐 GitHub Stats Cards
+
+<p align="center">
+  <img
+    src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&icon_color=0072FF&text_color=e6edf3&ring_color=0072FF"
+    height="180"
+    alt="GitHub Stats"
+  />
+  &nbsp;&nbsp;
+  <img
+    src="https://github-readme-streak-stats.herokuapp.com/?user=raviraj940&theme=dark&hide_border=true&background=0d1117&ring=00C6FF&fire=0072FF&currStreakLabel=00C6FF"
+    height="180"
+    alt="GitHub Streak"
+  />
+</p>
+
+<p align="center">
+  <img
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=8"
+    height="160"
+    alt="Top Languages"
+  />
 </p>
 
 <hr>
@@ -208,13 +321,17 @@ and building data-driven solutions that solve real-world problems.
 <!--      MACHINE LEARNING     -->
 <!-- ========================= -->
 
-<h3>🧠 Currently Exploring in Machine Learning</h3>
+<h2>🧠 Currently Learning</h2>
+
+<hr>
 
 <ul>
-<li>Regression</li>
-<li>Classification</li>
-<li>Clustering</li>
-<li>Feature Engineering</li>
+<li>🔢 <b>Regression</b> — predicting continuous values from data</li>
+<li>🏷️ <b>Classification</b> — building intelligent decision systems</li>
+<li>🔵 <b>Clustering</b> — discovering hidden structure in datasets</li>
+<li>🧪 <b>Feature Engineering</b> — transforming raw data into model-ready inputs</li>
+<li>🤖 <b>Deep Learning</b> — exploring neural networks with TensorFlow</li>
+<li>📊 <b>Data Visualization</b> — telling stories through charts and dashboards</li>
 </ul>
 
 <hr>
@@ -235,22 +352,22 @@ and building data-driven solutions that solve real-world problems.
 
 <p>
 A face recognition based attendance management system developed
-to automate attendance recording.
+to automate attendance recording — eliminating manual roll calls completely.
 </p>
 
 <b>Key Features:</b>
 
 <ul>
-<li>Face-based attendance</li>
-<li>Automated attendance recording</li>
-<li>Attendance management</li>
-<li>Java-based application</li>
+<li>🎭 Real-time face detection and recognition</li>
+<li>📋 Automated attendance recording and logging</li>
+<li>📊 Attendance management and reporting</li>
+<li>☕ Built with Java — robust and cross-platform</li>
 </ul>
 
 <p>
 🔗
 <a href="https://github.com/raviraj940/AttendEase">
-View Project
+View Project → AttendEase
 </a>
 </p>
 
@@ -263,24 +380,25 @@ View Project
 </p>
 
 <p>
-A modern PDF toolkit designed for working with PDF documents.
+A modern PDF toolkit designed for effortlessly working with PDF documents —
+merge, split, compress and convert with a clean web interface.
 </p>
 
 <b>Key Features:</b>
 
 <ul>
-<li>Merge PDF files</li>
-<li>Split PDF files</li>
-<li>Compress PDF files</li>
-<li>Convert PDF files</li>
-<li>Organize PDF documents</li>
-<li>Secure PDF files</li>
+<li>📎 Merge multiple PDF files into one</li>
+<li>✂️ Split PDF files by page range</li>
+<li>🗜️ Compress PDF files for smaller size</li>
+<li>🔄 Convert PDF files to other formats</li>
+<li>🗂️ Organize and manage PDF documents</li>
+<li>🔒 Secure and password-protect PDF files</li>
 </ul>
 
 <p>
 🔗
 <a href="https://github.com/raviraj940/PDFNova">
-View Project
+View Project → PDFNova
 </a>
 </p>
 
@@ -292,21 +410,16 @@ View Project
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=38&section=header"
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=4&section=header"
     width="96%"
   />
 </p>
 
-<h2>🌙 Fun Facts & Philosophy</h2>
+<h2>🌙 Fun Facts &amp; Philosophy</h2>
 
 <hr>
 
 <ul>
-
-<!-- <li>
-☕ <b>Late Night Ideas</b> —
-My best ideas often arrive when I'm deep into a problem.
-</li> -->
 
 <li>
 🧪 <b>Experiment Mindset</b> —
@@ -333,6 +446,11 @@ I enjoy working directly with code and development tools.
 Build first, learn from the result, then improve.
 </li>
 
+<li>
+📊 <b>Data First</b> —
+Every decision is better with the right data behind it.
+</li>
+
 </ul>
 
 <hr>
@@ -343,7 +461,7 @@ Build first, learn from the result, then improve.
 
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=38&section=header"
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:00C6FF,100:0072FF&height=4&section=header"
     width="96%"
   />
 </p>
@@ -426,8 +544,13 @@ that's what code is for.
 
 <a href="https://github.com/raviraj940">
 <img
-src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=100&section=footer"
+src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=120&section=footer&text=Thanks%20for%20visiting!&fontSize=20&fontColor=FFFFFF&fontAlignY=65"
+width="100%"
 />
 </a>
 
+</p>
+
+<p align="center">
+  <sub>📊 GitHub Wrapped charts auto-updated daily via GitHub Actions • Last chart update: see <a href=".github/workflows/github-wrapped.yml">workflow</a></sub>
 </p>

@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="800" height="180">
+  <rect width="800" height="180" rx="16" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <text x="400" y="80" fill="#8b949e" font-size="16" text-anchor="middle" font-family="system-ui,sans-serif">⏳ Chart updating…</text>
+  <text x="400" y="108" fill="#6e7681" font-size="12" text-anchor="middle" font-family="system-ui,sans-serif">Run the GitHub Actions workflow to generate live charts.</text>
+  <text x="400" y="130" fill="#6e7681" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Go to Actions → 📊 GitHub Wrapped → Run workflow</text>
+</svg>
