@@ -62,9 +62,9 @@
   <text x="603.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Oct</text>
   <text x="603.0" y="149.5" fill="#e6edf3" font-size="9" text-anchor="middle">7</text>
   <defs><linearGradient id="barG10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00C6FF"/><stop offset="100%" stop-color="#0072FF"/></linearGradient></defs>
-  <rect x="640.0" y="89.2" width="46" height="90.8" rx="4" fill="url(#barG10)"><title>Nov: 24 contributions</title></rect>
+  <rect x="640.0" y="85.4" width="46" height="94.6" rx="4" fill="url(#barG10)"><title>Nov: 25 contributions</title></rect>
   <text x="663.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Nov</text>
-  <text x="663.0" y="85.2" fill="#e6edf3" font-size="9" text-anchor="middle">24</text>
+  <text x="663.0" y="81.4" fill="#e6edf3" font-size="9" text-anchor="middle">25</text>
   <defs><linearGradient id="barG11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0072FF"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
   <rect x="700.0" y="180.0" width="46" height="0.0" rx="4" fill="url(#barG11)"><title>Dec: 0 contributions</title></rect>
   <text x="723.0" y="195" fill="#8b949e" font-size="10" text-anchor="middle">Dec</text>
