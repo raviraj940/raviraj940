@@ -229,12 +229,12 @@ and building data-driven solutions that tackle real-world challenges.
 
 ---
 
-### 🗓️ Day-Wise Contributions (Calendar Heatmap)
+### 📈 Day-Wise Contribution Graph
 
 <p align="center">
   <img
-    src="./assets/charts/heatmap.svg"
-    alt="Day-Wise Contribution Calendar"
+    src="./assets/charts/daily_activity_graph.svg"
+    alt="Day-Wise Contribution Graph"
     width="98%"
   />
 </p>

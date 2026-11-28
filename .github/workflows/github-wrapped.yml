@@ -71,7 +71,7 @@ jobs:
           echo "Generated files:"
           ls -lh assets/charts/
           # Check all expected SVGs exist
-          for f in activity_graph.svg heatmap.svg summary.svg languages.svg monthly_bars.svg weekday_bars.svg top_repos.svg coding_time.svg; do
+          for f in daily_activity_graph.svg activity_graph.svg heatmap.svg summary.svg languages.svg monthly_bars.svg weekday_bars.svg top_repos.svg coding_time.svg; do
             if [ -f "assets/charts/$f" ]; then
               echo "  ✔ $f ($(wc -c < assets/charts/$f) bytes)"
             else

@@ -452,39 +452,43 @@ def gen_monthly_bars(monthly: dict, year: int) -> str:
     return svg
 
 
-# ── 4b. Smooth Activity Graph ──────────────────────────────────────────────────
+# ── 4b. Smooth Day-Wise Activity Graph ──────────────────────────────────────────
 
-def gen_activity_graph(monthly: dict, year: int) -> str:
-    months_order = [f"{year}-{m:02d}" for m in range(1, 13)]
-    month_labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    values = [monthly.get(m, 0) for m in months_order]
-    max_v = max(values) if max(values) > 0 else 10
+def gen_daily_activity_graph(all_days: list, window: int = 42) -> str:
+    recent_days = all_days[-window:] if len(all_days) >= window else all_days
+    counts = [d["contributionCount"] for d in recent_days]
+    max_c = max(counts) if max(counts) > 0 else 10
+    y_max = max(max_c + 2, 10)
 
-    W, H = 840, 240
-    LEFT = 50
-    RIGHT = W - 30
+    W = 860
+    H = 250
+    LEFT = 45
+    RIGHT = W - 25
     BOTTOM = H - 45
-    TOP = 55
+    TOP = 60
     CHART_W = RIGHT - LEFT
     CHART_H = BOTTOM - TOP
 
+    N = len(recent_days)
     points = []
-    for i, v in enumerate(values):
-        x = LEFT + (i / 11) * CHART_W
-        y = BOTTOM - (v / max_v) * CHART_H
-        points.append((x, y, v, month_labels[i]))
+    for i, d in enumerate(recent_days):
+        x = LEFT + (i / max(1, N - 1)) * CHART_W
+        count = d["contributionCount"]
+        y = BOTTOM - (count / y_max) * CHART_H
+        dt = datetime.date.fromisoformat(d["date"])
+        points.append((x, y, count, dt))
 
     path_d = f"M {points[0][0]:.1f} {points[0][1]:.1f}"
     for i in range(len(points) - 1):
         x0, y0 = points[i][0], points[i][1]
         x1, y1 = points[i+1][0], points[i+1][1]
-        cp1x = x0 + (x1 - x0) / 2
-        cp1y = y0
-        cp2x = x0 + (x1 - x0) / 2
-        cp2y = y1
-        path_d += f" C {cp1x:.1f} {cp1y:.1f}, {cp2x:.1f} {cp2y:.1f}, {x1:.1f} {y1:.1f}"
+        dx = (x1 - x0) / 2
+        path_d += f" C {x0 + dx:.1f} {y0:.1f}, {x1 - dx:.1f} {y1:.1f}, {x1:.1f} {y1:.1f}"
 
     area_d = path_d + f" L {points[-1][0]:.1f} {BOTTOM:.1f} L {points[0][0]:.1f} {BOTTOM:.1f} Z"
+
+    start_date_str = points[0][3].strftime("%b %d")
+    end_date_str = points[-1][3].strftime("%b %d, %Y")
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
   <defs>
@@ -501,39 +505,50 @@ def gen_activity_graph(monthly: dict, year: int) -> str:
       <stop offset="100%" stop-color="#0072FF"/>
     </linearGradient>
     <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#00C6FF" stop-opacity="0.35"/>
-      <stop offset="70%" stop-color="#0072FF" stop-opacity="0.10"/>
+      <stop offset="0%" stop-color="#00C6FF" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#0072FF" stop-opacity="0.10"/>
       <stop offset="100%" stop-color="#0072FF" stop-opacity="0.0"/>
     </linearGradient>
     <filter id="glow">
-      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00C6FF" flood-opacity="0.6"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00C6FF" flood-opacity="0.7"/>
     </filter>
   </defs>
 
+  <!-- Background Card -->
   <rect width="{W}" height="{H}" rx="16" fill="url(#bg)" stroke="#30363d" stroke-width="1.5"/>
-  <text x="24" y="32" fill="#e6edf3" font-size="15" font-weight="700">📈 GitHub Activity Graph ({year})</text>
-  <text x="{RIGHT}" y="32" fill="#8b949e" font-size="11" text-anchor="end">Monthly Contribution Trend</text>
+
+  <!-- Title & Date Window -->
+  <text x="24" y="32" fill="#e6edf3" font-size="15" font-weight="700">📈 Day-Wise Contribution Graph</text>
+  <text x="{RIGHT}" y="32" fill="#8b949e" font-size="11" text-anchor="end">Daily Activity ({start_date_str} &#x2013; {end_date_str})</text>
 '''
 
-    for pct in [0.25, 0.5, 0.75, 1.0]:
-        gy = BOTTOM - pct * CHART_H
-        v_label = int(pct * max_v)
+    grid_steps = 4
+    for s in range(1, grid_steps + 1):
+        val = int((s / grid_steps) * y_max)
+        gy = BOTTOM - (val / y_max) * CHART_H
         svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{RIGHT}" y2="{gy:.1f}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>\n'
-        svg += f'  <text x="{LEFT - 8}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" text-anchor="end">{v_label}</text>\n'
+        svg += f'  <text x="{LEFT - 8}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" text-anchor="end">{val}</text>\n'
 
     svg += f'  <line x1="{LEFT}" y1="{BOTTOM}" x2="{RIGHT}" y2="{BOTTOM}" stroke="#30363d" stroke-width="1.5"/>\n'
     svg += f'  <text x="{LEFT - 8}" y="{BOTTOM + 4}" fill="#8b949e" font-size="10" text-anchor="end">0</text>\n'
 
     svg += f'  <path d="{area_d}" fill="url(#areaGrad)"/>\n'
-    svg += f'  <path d="{path_d}" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>\n'
+    svg += f'  <path d="{path_d}" fill="none" stroke="url(#lineGrad)" stroke-width="2.8" stroke-linecap="round" filter="url(#glow)"/>\n'
 
-    for x, y, v, lbl in points:
-        svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="11" text-anchor="middle">{lbl}</text>\n'
-        if v > 0:
-            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="#00C6FF" stroke="#ffffff" stroke-width="2"><title>{lbl}: {v} contributions</title></circle>\n'
-            svg += f'  <text x="{x:.1f}" y="{y - 8:.1f}" fill="#e6edf3" font-size="10" font-weight="700" text-anchor="middle">{v}</text>\n'
+    label_interval = max(1, N // 8)
+    for i, (x, y, count, dt) in enumerate(points):
+        if i % label_interval == 0 or i == N - 1:
+            date_lbl = dt.strftime("%b %d")
+            svg += f'  <line x1="{x:.1f}" y1="{BOTTOM}" x2="{x:.1f}" y2="{BOTTOM + 5}" stroke="#30363d" stroke-width="1"/>\n'
+            svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="10" text-anchor="middle">{date_lbl}</text>\n'
+
+    for x, y, count, dt in points:
+        date_tip = dt.strftime("%Y-%m-%d")
+        if count > 0:
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="#00C6FF" stroke="#ffffff" stroke-width="1.8"><title>{date_tip}: {count} contributions</title></circle>\n'
+            svg += f'  <text x="{x:.1f}" y="{y - 8:.1f}" fill="#e6edf3" font-size="10" font-weight="700" text-anchor="middle">{count}</text>\n'
         else:
-            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#30363d"><title>{lbl}: 0 contributions</title></circle>\n'
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="1.8" fill="#21262d"><title>{date_tip}: 0 contributions</title></circle>\n'
 
     svg += svg_footer()
     return svg
@@ -737,9 +752,12 @@ def main():
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+    daily_graph = gen_daily_activity_graph(all_days, 42)
+
     charts = {
-        "activity_graph.svg": gen_activity_graph(monthly, year),
-        "heatmap.svg":        gen_heatmap(all_days, year),
+        "daily_activity_graph.svg": daily_graph,
+        "activity_graph.svg":       daily_graph,
+        "heatmap.svg":              gen_heatmap(all_days, year),
         "summary.svg":        gen_summary_card(total, active, streak, gap,
                                                weekend, b_date, b_count, year),
         "languages.svg":      gen_language_donut(langs),
