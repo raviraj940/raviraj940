@@ -229,12 +229,12 @@ and building data-driven solutions that tackle real-world challenges.
 
 ---
 
-### 📈 GitHub Activity Graph
+### 🗓️ Day-Wise Contributions (Calendar Heatmap)
 
 <p align="center">
   <img
-    src="./assets/charts/activity_graph.svg"
-    alt="GitHub Activity Graph"
+    src="./assets/charts/heatmap.svg"
+    alt="Day-Wise Contribution Calendar"
     width="98%"
   />
 </p>
@@ -292,18 +292,10 @@ and building data-driven solutions that tackle real-world challenges.
 
 <br>
 
-<p align="center"><b>📆 Monthly Contributions</b></p>
+<p align="center"><b>📆 Month-Wise Contributions</b></p>
 
 <p align="center">
-  <img src="./assets/charts/monthly_bars.svg" alt="Monthly Contributions" width="98%"/>
-</p>
-
-<br>
-
-<p align="center"><b>📅 Contributions by Weekday</b></p>
-
-<p align="center">
-  <img src="./assets/charts/weekday_bars.svg" alt="Weekday Contributions" width="98%"/>
+  <img src="./assets/charts/monthly_bars.svg" alt="Month-Wise Contributions" width="98%"/>
 </p>
 
 <br>

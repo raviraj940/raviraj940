@@ -240,14 +240,14 @@ def pct_color(pct: float) -> str:
 # ── 1. Heatmap ────────────────────────────────────────────────────────────────
 
 def gen_heatmap(days: list, year: int) -> str:
-    CELL = 11
-    GAP  = 2
+    CELL = 12
+    GAP  = 3
     COLS = 53
     ROWS = 7
-    LEFT_PAD = 30
-    TOP_PAD  = 50
-    W = LEFT_PAD + COLS * (CELL + GAP) + 20
-    H = TOP_PAD + ROWS * (CELL + GAP) + 30
+    LEFT_PAD = 42
+    TOP_PAD  = 52
+    W = 860
+    H = 200
 
     max_c = max((d["contributionCount"] for d in days), default=1) or 1
 
@@ -274,7 +274,16 @@ def gen_heatmap(days: list, year: int) -> str:
     month_labels = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
     svg  = svg_header(W, H)
-    svg += f'  <text x="{LEFT_PAD}" y="28" fill="#8b949e" font-size="13" font-weight="700">Contribution Calendar {year}</text>\n'
+    svg += f'  <text x="24" y="30" fill="#e6edf3" font-size="14" font-weight="700">🗓️ Day-Wise Contribution Calendar ({year})</text>\n'
+
+    # Legend
+    svg += f'  <text x="{W - 130}" y="30" fill="#8b949e" font-size="10">Less</text>\n'
+    svg += f'  <rect x="{W - 105}" y="20" width="10" height="10" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>\n'
+    svg += f'  <rect x="{W - 91}" y="20" width="10" height="10" rx="2" fill="#0e4429"/>\n'
+    svg += f'  <rect x="{W - 77}" y="20" width="10" height="10" rx="2" fill="#006d32"/>\n'
+    svg += f'  <rect x="{W - 63}" y="20" width="10" height="10" rx="2" fill="#26a641"/>\n'
+    svg += f'  <rect x="{W - 49}" y="20" width="10" height="10" rx="2" fill="#39d353"/>\n'
+    svg += f'  <text x="{W - 35}" y="30" fill="#8b949e" font-size="10">More</text>\n'
 
     # Month labels
     for m in range(12):
@@ -283,13 +292,13 @@ def gen_heatmap(days: list, year: int) -> str:
         doy    = (ref_dt - jan1).days
         col    = (doy + jan1.weekday() + 1) // 7
         mx     = LEFT_PAD + col * (CELL + GAP)
-        svg   += f'  <text x="{mx}" y="{TOP_PAD - 6}" fill="#8b949e" font-size="9">{month_labels[m]}</text>\n'
+        svg   += f'  <text x="{mx}" y="{TOP_PAD - 8}" fill="#8b949e" font-size="10">{month_labels[m]}</text>\n'
 
     # Day labels
     for i, lbl in enumerate(day_labels):
         if lbl:
             ry = TOP_PAD + i * (CELL + GAP) + CELL - 2
-            svg += f'  <text x="0" y="{ry}" fill="#8b949e" font-size="9">{lbl}</text>\n'
+            svg += f'  <text x="12" y="{ry}" fill="#8b949e" font-size="10">{lbl}</text>\n'
 
     # Cells
     for week_col in range(COLS):
