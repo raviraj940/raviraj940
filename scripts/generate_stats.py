@@ -411,61 +411,120 @@ def gen_language_donut(lang_data: dict) -> str:
 # ── 4. Monthly bar chart ──────────────────────────────────────────────────────
 
 def gen_monthly_bars(monthly: dict, year: int) -> str:
-    W, H = 800, 220
+    W, H = 860, 250
     months_order = [f"{year}-{m:02d}" for m in range(1, 13)]
     values = [monthly.get(m, 0) for m in months_order]
-    max_v  = max(values) or 1
+    max_v = max(values) or 1
+    total_v = sum(values)
 
-    BAR_W  = 46
-    GAP    = 14
-    LEFT   = 40
-    BOTTOM = H - 40
-    CHART_H = H - 80
+    month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+    best_idx = values.index(max(values))
+    best_name = month_names[best_idx]
+    best_count = values[best_idx]
 
-    svg  = svg_header(W, H)
-    svg += f'  <text x="20" y="28" fill="#e6edf3" font-size="14" font-weight="700">📆 Contributions by Month ({year})</text>\n'
+    BAR_W = 50
+    GAP = 14
+    LEFT = 48
+    RIGHT = W - 28
+    BOTTOM = H - 46
+    CHART_H = H - 90
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+      text {{ font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }}
+    </style>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="{W}" height="{H}" rx="14" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2"/>
+
+  <!-- Card Header -->
+  <text x="24" y="32" fill="#f0f6fc" font-size="15" font-weight="700">📆 Month-Wise Contributions ({year})</text>
+  <text x="24" y="50" fill="#8b949e" font-size="11">Monthly Activity Breakdown</text>
+
+  <!-- Stat Pills in Header -->
+  <g transform="translate({RIGHT - 310}, 20)">
+    <rect width="145" height="26" rx="13" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <circle cx="14" cy="13" r="4" fill="#00C6FF"/>
+    <text x="24" y="17" fill="#8b949e" font-size="11">Total:</text>
+    <text x="56" y="17" fill="#f0f6fc" font-size="11" font-weight="700">{total_v} commits</text>
+  </g>
+  <g transform="translate({RIGHT - 155}, 20)">
+    <rect width="155" height="26" rx="13" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <circle cx="14" cy="13" r="4" fill="#38ef7d"/>
+    <text x="24" y="17" fill="#8b949e" font-size="11">Peak:</text>
+    <text x="58" y="17" fill="#f0f6fc" font-size="11" font-weight="700">{best_name} ({best_count})</text>
+  </g>
+'''
 
     # Gridlines
     for pct in [0.25, 0.5, 0.75, 1.0]:
         gy = BOTTOM - pct * CHART_H
-        v  = int(pct * max_v)
-        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{W-20}" y2="{gy:.1f}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4"/>\n'
-        svg += f'  <text x="{LEFT - 5}" y="{gy + 4:.1f}" fill="#8b949e" font-size="9" text-anchor="end">{v}</text>\n'
+        v = int(pct * max_v)
+        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{RIGHT}" y2="{gy:.1f}" stroke="#21262d" stroke-width="1" stroke-dasharray="3 3"/>\n'
+        svg += f'  <text x="{LEFT - 10}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" font-weight="500" text-anchor="end">{v}</text>\n'
 
-    month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+    # Baseline
+    svg += f'  <line x1="{LEFT}" y1="{BOTTOM}" x2="{RIGHT}" y2="{BOTTOM}" stroke="#30363d" stroke-width="1.2"/>\n'
+    svg += f'  <text x="{LEFT - 10}" y="{BOTTOM + 4}" fill="#8b949e" font-size="10" font-weight="500" text-anchor="end">0</text>\n'
+
     for i, (v, lbl) in enumerate(zip(values, month_names)):
         x = LEFT + i * (BAR_W + GAP)
         bar_h = (v / max_v) * CHART_H
-        y     = BOTTOM - bar_h
-        # Gradient fill per bar
-        gid = f"barG{i}"
-        pct_ratio = v / max_v
-        c1  = "#00C6FF" if pct_ratio > 0.5 else "#0072FF"
-        c2  = "#0072FF" if pct_ratio > 0.5 else "#7c3aed"
-        svg += f'  <defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{c1}"/><stop offset="100%" stop-color="{c2}"/></linearGradient></defs>\n'
-        svg += f'  <rect x="{x:.1f}" y="{y:.1f}" width="{BAR_W}" height="{bar_h:.1f}" rx="4" fill="url(#{gid})"><title>{lbl}: {v} contributions</title></rect>\n'
-        svg += f'  <text x="{x + BAR_W/2:.1f}" y="{BOTTOM + 15}" fill="#8b949e" font-size="10" text-anchor="middle">{lbl}</text>\n'
-        if v > 0:
-            svg += f'  <text x="{x + BAR_W/2:.1f}" y="{y - 4:.1f}" fill="#e6edf3" font-size="9" text-anchor="middle">{v}</text>\n'
+        y = BOTTOM - bar_h
 
-    svg += svg_footer()
+        gid = f"barG{i}"
+        pct_ratio = v / max_v if max_v else 0
+        if pct_ratio > 0.8:
+            c1, c2 = "#00C6FF", "#0072FF"
+        elif pct_ratio > 0.3:
+            c1, c2 = "#0072FF", "#38ef7d"
+        elif pct_ratio > 0:
+            c1, c2 = "#0072FF", "#7c3aed"
+        else:
+            c1, c2 = "#21262d", "#21262d"
+
+        svg += f'  <defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{c1}"/><stop offset="100%" stop-color="{c2}"/></linearGradient></defs>\n'
+
+        if v > 0:
+            svg += f'  <rect x="{x:.1f}" y="{y:.1f}" width="{BAR_W}" height="{bar_h:.1f}" rx="5" fill="url(#{gid})"><title>{lbl}: {v} contributions</title></rect>\n'
+            svg += f'  <text x="{x + BAR_W/2:.1f}" y="{y - 6:.1f}" fill="#f0f6fc" font-size="10" font-weight="700" text-anchor="middle">{v}</text>\n'
+        else:
+            svg += f'  <rect x="{x:.1f}" y="{BOTTOM - 3}" width="{BAR_W}" height="3" rx="1.5" fill="#21262d"><title>{lbl}: 0 contributions</title></rect>\n'
+
+        svg += f'  <text x="{x + BAR_W/2:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="11" text-anchor="middle">{lbl}</text>\n'
+
+    svg += '</svg>\n'
     return svg
 
 
 # ── 4b. Smooth Day-Wise Activity Graph ──────────────────────────────────────────
 
-def gen_daily_activity_graph(all_days: list, window: int = 42) -> str:
-    recent_days = all_days[-window:] if len(all_days) >= window else all_days
+def gen_daily_activity_graph(all_days: list, window: int = 35) -> str:
+    today = datetime.date.today()
+    past_days = [d for d in all_days if datetime.date.fromisoformat(d["date"]) <= today]
+    if not past_days:
+        past_days = all_days
+
+    recent_days = past_days[-window:] if len(past_days) >= window else past_days
     counts = [d["contributionCount"] for d in recent_days]
-    max_c = max(counts) if max(counts) > 0 else 10
+    total_w = sum(counts)
+    active_days_w = sum(1 for c in counts if c > 0)
+    max_c = max(counts) if counts and max(counts) > 0 else 10
     y_max = max(max_c + 2, 10)
 
     W = 860
-    H = 250
-    LEFT = 45
-    RIGHT = W - 25
-    BOTTOM = H - 45
-    TOP = 60
+    H = 260
+    LEFT = 48
+    RIGHT = W - 28
+    BOTTOM = H - 48
+    TOP = 68
     CHART_W = RIGHT - LEFT
     CHART_H = BOTTOM - TOP
 
@@ -493,64 +552,86 @@ def gen_daily_activity_graph(all_days: list, window: int = 42) -> str:
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
-      text {{ font-family: "Inter", "Segoe UI", system-ui, sans-serif; }}
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+      text {{ font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }}
     </style>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0d1117"/>
       <stop offset="100%" stop-color="#161b22"/>
     </linearGradient>
     <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#00C6FF"/>
-      <stop offset="100%" stop-color="#0072FF"/>
+      <stop offset="50%" stop-color="#0072FF"/>
+      <stop offset="100%" stop-color="#38ef7d"/>
     </linearGradient>
     <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#00C6FF" stop-opacity="0.32"/>
-      <stop offset="60%" stop-color="#0072FF" stop-opacity="0.10"/>
+      <stop offset="0%" stop-color="#00C6FF" stop-opacity="0.38"/>
+      <stop offset="50%" stop-color="#0072FF" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#0072FF" stop-opacity="0.0"/>
     </linearGradient>
-    <filter id="glow">
-      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00C6FF" flood-opacity="0.7"/>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00C6FF" flood-opacity="0.65"/>
     </filter>
   </defs>
 
   <!-- Background Card -->
-  <rect width="{W}" height="{H}" rx="16" fill="url(#bg)" stroke="#30363d" stroke-width="1.5"/>
+  <rect width="{W}" height="{H}" rx="14" fill="url(#cardBg)" stroke="#30363d" stroke-width="1.2"/>
 
-  <!-- Title & Date Window -->
-  <text x="24" y="32" fill="#e6edf3" font-size="15" font-weight="700">📈 Day-Wise Contribution Graph</text>
-  <text x="{RIGHT}" y="32" fill="#8b949e" font-size="11" text-anchor="end">Daily Activity ({start_date_str} &#x2013; {end_date_str})</text>
+  <!-- Card Header -->
+  <text x="24" y="32" fill="#f0f6fc" font-size="15" font-weight="700">📈 Day-Wise Contribution Activity</text>
+  <text x="24" y="50" fill="#8b949e" font-size="11">Daily Coding Velocity ({start_date_str} &#x2013; {end_date_str})</text>
+
+  <!-- Stat Pills in Header -->
+  <g transform="translate({RIGHT - 300}, 20)">
+    <rect width="140" height="26" rx="13" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <circle cx="14" cy="13" r="4" fill="#38ef7d"/>
+    <text x="24" y="17" fill="#8b949e" font-size="11">Total:</text>
+    <text x="56" y="17" fill="#f0f6fc" font-size="11" font-weight="700">{total_w} commits</text>
+  </g>
+  <g transform="translate({RIGHT - 148}, 20)">
+    <rect width="148" height="26" rx="13" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <circle cx="14" cy="13" r="4" fill="#00C6FF"/>
+    <text x="24" y="17" fill="#8b949e" font-size="11">Active Days:</text>
+    <text x="94" y="17" fill="#f0f6fc" font-size="11" font-weight="700">{active_days_w}/{N}</text>
+  </g>
 '''
 
     grid_steps = 4
     for s in range(1, grid_steps + 1):
         val = int((s / grid_steps) * y_max)
         gy = BOTTOM - (val / y_max) * CHART_H
-        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{RIGHT}" y2="{gy:.1f}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>\n'
-        svg += f'  <text x="{LEFT - 8}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" text-anchor="end">{val}</text>\n'
+        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{RIGHT}" y2="{gy:.1f}" stroke="#21262d" stroke-width="1" stroke-dasharray="3 3"/>\n'
+        svg += f'  <text x="{LEFT - 10}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" font-weight="500" text-anchor="end">{val}</text>\n'
 
-    svg += f'  <line x1="{LEFT}" y1="{BOTTOM}" x2="{RIGHT}" y2="{BOTTOM}" stroke="#30363d" stroke-width="1.5"/>\n'
-    svg += f'  <text x="{LEFT - 8}" y="{BOTTOM + 4}" fill="#8b949e" font-size="10" text-anchor="end">0</text>\n'
+    svg += f'  <line x1="{LEFT}" y1="{BOTTOM}" x2="{RIGHT}" y2="{BOTTOM}" stroke="#30363d" stroke-width="1.2"/>\n'
+    svg += f'  <text x="{LEFT - 10}" y="{BOTTOM + 4}" fill="#8b949e" font-size="10" font-weight="500" text-anchor="end">0</text>\n'
 
     svg += f'  <path d="{area_d}" fill="url(#areaGrad)"/>\n'
-    svg += f'  <path d="{path_d}" fill="none" stroke="url(#lineGrad)" stroke-width="2.8" stroke-linecap="round" filter="url(#glow)"/>\n'
+    svg += f'  <path d="{path_d}" fill="none" stroke="url(#lineGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>\n'
 
-    label_interval = max(1, N // 8)
-    for i, (x, y, count, dt) in enumerate(points):
-        if i % label_interval == 0 or i == N - 1:
-            date_lbl = dt.strftime("%b %d")
-            svg += f'  <line x1="{x:.1f}" y1="{BOTTOM}" x2="{x:.1f}" y2="{BOTTOM + 5}" stroke="#30363d" stroke-width="1"/>\n'
-            svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="10" text-anchor="middle">{date_lbl}</text>\n'
+    label_step = max(1, N // 7)
+    for i in range(0, N, label_step):
+        x, y, count, dt = points[i]
+        date_lbl = dt.strftime("%b %d")
+        svg += f'  <line x1="{x:.1f}" y1="{BOTTOM}" x2="{x:.1f}" y2="{BOTTOM + 5}" stroke="#30363d" stroke-width="1"/>\n'
+        svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="10" text-anchor="middle">{date_lbl}</text>\n'
+    if (N - 1) % label_step != 0:
+        x, y, count, dt = points[-1]
+        date_lbl = dt.strftime("%b %d")
+        svg += f'  <line x1="{x:.1f}" y1="{BOTTOM}" x2="{x:.1f}" y2="{BOTTOM + 5}" stroke="#30363d" stroke-width="1"/>\n'
+        svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="10" text-anchor="middle">{date_lbl}</text>\n'
 
     for x, y, count, dt in points:
         date_tip = dt.strftime("%Y-%m-%d")
         if count > 0:
-            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="#00C6FF" stroke="#ffffff" stroke-width="1.8"><title>{date_tip}: {count} contributions</title></circle>\n'
-            svg += f'  <text x="{x:.1f}" y="{y - 8:.1f}" fill="#e6edf3" font-size="10" font-weight="700" text-anchor="middle">{count}</text>\n'
+            if count >= max_c:
+                svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="8" fill="none" stroke="#38ef7d" stroke-width="1.5" stroke-opacity="0.8"/>\n'
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="#00C6FF" stroke="#ffffff" stroke-width="2"><title>{date_tip}: {count} contributions</title></circle>\n'
+            svg += f'  <text x="{x:.1f}" y="{y - 8:.1f}" fill="#f0f6fc" font-size="10" font-weight="700" text-anchor="middle">{count}</text>\n'
         else:
-            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="1.8" fill="#21262d"><title>{date_tip}: 0 contributions</title></circle>\n'
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#21262d"><title>{date_tip}: 0 contributions</title></circle>\n'
 
-    svg += svg_footer()
+    svg += '</svg>\n'
     return svg
 
 
@@ -752,7 +833,7 @@ def main():
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    daily_graph = gen_daily_activity_graph(all_days, 42)
+    daily_graph = gen_daily_activity_graph(all_days, 35)
 
     charts = {
         "daily_activity_graph.svg": daily_graph,

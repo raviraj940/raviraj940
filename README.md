@@ -28,7 +28,7 @@
 
 <p align="center">
 
-<a href="YOUR_LINKEDIN_LINK">
+<a href="https://www.linkedin.com/in/raviraj940">
 <img src="https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
@@ -36,15 +36,11 @@
 <img src="https://img.shields.io/badge/KAGGLE-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white"/>
 </a>
 
-<a href="YOUR_LEETCODE_LINK">
+<a href="https://leetcode.com/u/raviraj940/">
 <img src="https://img.shields.io/badge/LEETCODE-FFA116?style=for-the-badge&logo=leetcode&logoColor=white"/>
 </a>
 
-<a href="YOUR_HACKERRANK_LINK">
-<img src="https://img.shields.io/badge/HACKERRANK-2EC866?style=for-the-badge&logo=hackerrank&logoColor=white"/>
-</a>
-
-<a href="mailto:YOUR_EMAIL">
+<a href="mailto:raviraj404r@gmail.com">
 <img src="https://img.shields.io/badge/GMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 
@@ -472,7 +468,7 @@ data projects, or just a good chat about technology and automation.
 
 <p align="center">
 
-<a href="YOUR_LINKEDIN_LINK">
+<a href="https://www.linkedin.com/in/raviraj940">
 <img src="https://img.shields.io/badge/CONNECT%20ON%20LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
@@ -480,17 +476,11 @@ data projects, or just a good chat about technology and automation.
 <img src="https://img.shields.io/badge/FIND%20ME%20ON%20KAGGLE-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white"/>
 </a>
 
-<a href="YOUR_LEETCODE_LINK">
+<a href="https://leetcode.com/u/raviraj940/">
 <img src="https://img.shields.io/badge/SOLVE%20WITH%20ME-FFA116?style=for-the-badge&logo=leetcode&logoColor=white"/>
 </a>
 
-<br>
-
-<a href="YOUR_HACKERRANK_LINK">
-<img src="https://img.shields.io/badge/COMPETE%20ON%20HACKERRANK-2EC866?style=for-the-badge&logo=hackerrank&logoColor=white"/>
-</a>
-
-<a href="mailto:YOUR_EMAIL">
+<a href="mailto:raviraj404r@gmail.com">
 <img src="https://img.shields.io/badge/SEND%20ME%20AN%20EMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 
@@ -505,14 +495,6 @@ data projects, or just a good chat about technology and automation.
 <h2 align="center">💡 Quick Stats</h2>
 
 <hr>
-
-<p align="center">
-
-<img
-src="https://komarev.com/ghpvc/?username=raviraj940&label=Profile%20views&color=blue&style=flat"
-/>
-
-</p>
 
 <p align="center">
 <b>Built with curiosity, powered by data, and driven by learning. ⭐</b>
