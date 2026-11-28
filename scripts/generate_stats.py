@@ -443,6 +443,93 @@ def gen_monthly_bars(monthly: dict, year: int) -> str:
     return svg
 
 
+# ── 4b. Smooth Activity Graph ──────────────────────────────────────────────────
+
+def gen_activity_graph(monthly: dict, year: int) -> str:
+    months_order = [f"{year}-{m:02d}" for m in range(1, 13)]
+    month_labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    values = [monthly.get(m, 0) for m in months_order]
+    max_v = max(values) if max(values) > 0 else 10
+
+    W, H = 840, 240
+    LEFT = 50
+    RIGHT = W - 30
+    BOTTOM = H - 45
+    TOP = 55
+    CHART_W = RIGHT - LEFT
+    CHART_H = BOTTOM - TOP
+
+    points = []
+    for i, v in enumerate(values):
+        x = LEFT + (i / 11) * CHART_W
+        y = BOTTOM - (v / max_v) * CHART_H
+        points.append((x, y, v, month_labels[i]))
+
+    path_d = f"M {points[0][0]:.1f} {points[0][1]:.1f}"
+    for i in range(len(points) - 1):
+        x0, y0 = points[i][0], points[i][1]
+        x1, y1 = points[i+1][0], points[i+1][1]
+        cp1x = x0 + (x1 - x0) / 2
+        cp1y = y0
+        cp2x = x0 + (x1 - x0) / 2
+        cp2y = y1
+        path_d += f" C {cp1x:.1f} {cp1y:.1f}, {cp2x:.1f} {cp2y:.1f}, {x1:.1f} {y1:.1f}"
+
+    area_d = path_d + f" L {points[-1][0]:.1f} {BOTTOM:.1f} L {points[0][0]:.1f} {BOTTOM:.1f} Z"
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {{ font-family: "Inter", "Segoe UI", system-ui, sans-serif; }}
+    </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="100%" stop-color="#0072FF"/>
+    </linearGradient>
+    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00C6FF" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#0072FF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0072FF" stop-opacity="0.0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00C6FF" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="{W}" height="{H}" rx="16" fill="url(#bg)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="24" y="32" fill="#e6edf3" font-size="15" font-weight="700">📈 GitHub Activity Graph ({year})</text>
+  <text x="{RIGHT}" y="32" fill="#8b949e" font-size="11" text-anchor="end">Monthly Contribution Trend</text>
+'''
+
+    for pct in [0.25, 0.5, 0.75, 1.0]:
+        gy = BOTTOM - pct * CHART_H
+        v_label = int(pct * max_v)
+        svg += f'  <line x1="{LEFT}" y1="{gy:.1f}" x2="{RIGHT}" y2="{gy:.1f}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>\n'
+        svg += f'  <text x="{LEFT - 8}" y="{gy + 4:.1f}" fill="#8b949e" font-size="10" text-anchor="end">{v_label}</text>\n'
+
+    svg += f'  <line x1="{LEFT}" y1="{BOTTOM}" x2="{RIGHT}" y2="{BOTTOM}" stroke="#30363d" stroke-width="1.5"/>\n'
+    svg += f'  <text x="{LEFT - 8}" y="{BOTTOM + 4}" fill="#8b949e" font-size="10" text-anchor="end">0</text>\n'
+
+    svg += f'  <path d="{area_d}" fill="url(#areaGrad)"/>\n'
+    svg += f'  <path d="{path_d}" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>\n'
+
+    for x, y, v, lbl in points:
+        svg += f'  <text x="{x:.1f}" y="{BOTTOM + 18}" fill="#8b949e" font-size="11" text-anchor="middle">{lbl}</text>\n'
+        if v > 0:
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="#00C6FF" stroke="#ffffff" stroke-width="2"><title>{lbl}: {v} contributions</title></circle>\n'
+            svg += f'  <text x="{x:.1f}" y="{y - 8:.1f}" fill="#e6edf3" font-size="10" font-weight="700" text-anchor="middle">{v}</text>\n'
+        else:
+            svg += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#30363d"><title>{lbl}: 0 contributions</title></circle>\n'
+
+    svg += svg_footer()
+    return svg
+
+
 # ── 5. Weekday bar chart ──────────────────────────────────────────────────────
 
 def gen_weekday_bars(weekday: dict) -> str:
@@ -642,6 +729,7 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     charts = {
+        "activity_graph.svg": gen_activity_graph(monthly, year),
         "heatmap.svg":        gen_heatmap(all_days, year),
         "summary.svg":        gen_summary_card(total, active, streak, gap,
                                                weekend, b_date, b_count, year),

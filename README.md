@@ -233,7 +233,7 @@ and building data-driven solutions that tackle real-world challenges.
 
 <p align="center">
   <img
-    src="https://github-readme-activity-graph.vercel.app/graph?username=raviraj940&bg_color=0d1117&color=00C6FF&line=0072FF&point=ffffff&area=true&hide_border=true&area_color=0d3b6b&custom_title=Ravi%20Raj%20GitHub%20Activity%20Graph&radius=6"
+    src="./assets/charts/activity_graph.svg"
     alt="GitHub Activity Graph"
     width="98%"
   />
@@ -279,34 +279,6 @@ and building data-driven solutions that tackle real-world challenges.
     src="https://github-readme-stats.vercel.app/api/top-langs/?username=raviraj940&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00C6FF&text_color=e6edf3&langs_count=10&card_width=380"
     height="260"
     alt="Top Languages Compact"
-  />
-</p>
-
-<br>
-
----
-
-### 🏆 GitHub Trophies
-
-<p align="center">
-  <img
-    src="https://github-profile-trophy.vercel.app/?username=raviraj940&theme=onestar&no-frame=true&no-bg=true&row=1&column=7&margin-w=6&margin-h=6"
-    alt="GitHub Trophies"
-    width="98%"
-  />
-</p>
-
-<br>
-
----
-
-### 📋 Contribution Summary
-
-<p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api?username=raviraj940&show_icons=true&theme=github_dark&hide_border=true&bg_color=161b22&title_color=00C6FF&icon_color=39d353&text_color=e6edf3&custom_title=Contribution+Summary+%E2%80%94+raviraj940&include_all_commits=true&count_private=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&card_width=700&rank_icon=percentile"
-    width="720"
-    alt="Contribution Summary"
   />
 </p>
 
